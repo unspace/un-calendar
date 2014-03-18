@@ -1,0 +1,98 @@
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin box-sizing($value) {
+  -webkit-box-sizing: $value;
+  -moz-box-sizing: $value;
+  box-sizing: $value;
+}
+
+.ui-calendar {
+  font-size: 14px;
+  background: #fff;
+}
+
+.ui-calendar-months {
+  @include clearfix;
+}
+
+.ui-calendar-month-container {
+  width: 200px;
+  float: left;
+  margin: 0;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.ui-calendar-month {
+  margin: 0;
+  padding: 0;
+}
+
+.ui-calendar-header {
+  position: relative;
+  line-height: 22px;
+
+  h1 {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  button {
+    position: absolute;
+    top: 0;
+  }
+}
+
+.ui-calendar-prev {
+  left: 0;
+}
+
+.ui-calendar-next {
+  right: 0;
+}
+
+.ui-calendar-today {
+  right: 30px;
+}
+
+.ui-calendar-slot {
+  float: left;
+  list-style: none;
+  text-align: center;
+  line-height: 30px;
+  padding: 0;
+  margin: 0;
+  width: 14.28%;
+  height: 30px;
+  border: 1px solid #eee;
+  @include box-sizing(border-box);
+
+  &.is-today {
+    background: #edc;
+  }
+
+  &.is-selected {
+    background: #cde;
+  }
+
+  &.is-disabled {
+    background: #eee;
+    color: #999;
+    cursor: default;
+  }
+}
+
+.ui-calendar-day {
+  cursor: pointer
+}
+
+.ui-calendar-empty {
+  cursor: default;
+  background: #eee;
+}

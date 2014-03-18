@@ -1,0 +1,38 @@
+{
+  "name": "ember-ui-calendar",
+  "main": "dist/cjs/main.js",
+  "version": "0.1.0",
+  "description": "A calendar component for Ember with a speedy month view",
+  "author": "Carsten Nielsen <heycarsten@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/heycarsten/ember-ui-calendar",
+  "devDependencies": {
+    "testem": "^0.6.9",
+    "broccoli": "^0.4.1",
+    "broccoli-dist-es6-module": "^0.1.8",
+    "broccoli-template": "^0.1.0",
+    "broccoli-sass": "^0.1.2"
+  },
+  "dependencies": {},
+  "scripts": {
+    "test": "./node_modules/.bin/testem ci"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heycarsten/ember-ui-calendar.git"
+  },
+  "keywords": [
+    "ember",
+    "component",
+    "calendar",
+    "month",
+    "view",
+    "day",
+    "picker",
+    "select",
+    "chooser"
+  ],
+  "bugs": {
+    "url": "https://github.com/heycarsten/ember-ui-calendar/issues"
+  }
+}

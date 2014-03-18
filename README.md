@@ -1,4 +1,3 @@
-ember-ui-calendar
-=================
+# Ember UI Calendar
 
-A calendar component for Ember with a speedy month view
+#### A calendar component for Ember with a _speedy_ month view

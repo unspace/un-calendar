@@ -1,0 +1,58 @@
+{{#unless disableHeader}}
+  <div class="ui-calendar-header">
+    {{#unless disableControls}}
+      <nav>
+        <button {{action "prev"}} {{bind-attr disabled="isPrevDisabled"}} class="ui-calendar-prev">
+          <span>{{{unbound prevLabel}}}</span>
+        </button>
+        <button {{action "next"}} {{bind-attr disabled="isNextDisabled"}} class="ui-calendar-next">
+          <span>{{{unbound nextLabel}}}</span>
+        </button>
+        {{#unless disableTodayButton}}
+          <button {{action "today"}} class="ui-calendar-today">
+            <span>{{{unbound todayLabel}}}</span>
+          </button>
+        {{/unless}}
+      </nav>
+    {{/unless}}
+  </div>
+{{/unless}}
+
+<div class="ui-calendar-months">
+  {{#if showPrevMonth}}
+    <div class="ui-calendar-prev-month ui-calendar-month-container">
+      <header>
+        {{prevMonthLabel}}
+      </header>
+      {{ui-calendar-month
+        month=prevMonth
+        selectedDates=selectedDates
+        disabledDates=disabledDates
+        select="dateSelected"}}
+    </div>
+  {{/if}}
+
+  <div class="ui-calendar-current-month ui-calendar-month-container">
+    <header>
+      {{monthLabel}}
+    </header>
+    {{ui-calendar-month
+      month=month
+      selectedDates=selectedDates
+      disabledDates=disabledDates
+      select="dateSelected"}}
+  </div>
+
+  {{#if showNextMonth}}
+    <div class="ui-calendar-next-month ui-calendar-month-container">
+      <header>
+        {{nextMonthLabel}}
+      </header>
+      {{ui-calendar-month
+        month=nextMonth
+        selectedDates=selectedDates
+        disabledDates=disabledDates
+        select="dateSelected"}}
+    </div>
+  {{/if}}
+</div>

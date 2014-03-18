@@ -1,0 +1,29 @@
+{
+  "name": "ember-ui-calendar",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "lib/main.js",
+  "authors": [
+    "Carsten Nielsen <heycarsten@gmail.com>"
+  ],
+
+  "moduleFormat": [
+    "amd",
+    "cjs",
+    "globals"
+  ],
+
+  "ignore": [
+    "bower_components",
+    "node_modules",
+    "package.json",
+    "testem.json",
+    "test/*",
+    "**/.*"
+  ],
+
+  "dependencies": {
+    "ember": ">=1.4 <2",
+    "moment": ">=2.5 <3"
+  }
+}
