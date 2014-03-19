@@ -26,6 +26,13 @@ now it's just not quick enough.
 
 _**A wild [calendar demo](http://emberjs.jsbin.com/komop/1/) appears!**_
 
+You can use the builds provided in the [`dist`](/dist) directory, if you don't
+know why there is a dist directory and just want a file to plop into your app
+you probably want [`dist/globals/main.js`](/dist/globals/main.js). There is also
+an very basic CSS file that you can use as a starting point for styling the
+calendar and month components located in
+[`dist/ui-calendar.css`](/dist/ui-calendar.css).
+
 The `ui-calendar` component wraps everything up into a widget that you can use
 to display a calendar and allow you users to select one or _n_ dates:
 
