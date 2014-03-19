@@ -12,6 +12,14 @@
   box-sizing: $value;
 }
 
+@mixin user-select($value) {
+  -webkit-user-select: $value;
+  -moz-user-select: $value;
+  -o-user-select: $value;
+  -ms-user-select: $value;
+  user-select: $value;
+}
+
 .ui-calendar {
   font-size: 14px;
   background: #fff;
@@ -27,6 +35,7 @@
   margin: 0;
   padding: 0;
   margin-top: 20px;
+  @include user-select(none);
 }
 
 .ui-calendar-month {
