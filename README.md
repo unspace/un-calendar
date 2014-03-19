@@ -104,7 +104,7 @@ $ broccoli serve
 ```
 
 Then either play around with one of the [examples](/examples) or fire up the
-test runner:
+test runner and add some tests:
 
 ```sh
 $ testem # Then follow the instructions
