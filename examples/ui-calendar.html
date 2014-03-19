@@ -26,6 +26,7 @@
             moment('2014-03-25'),
             moment('2014-03-26')
           ]);
+          controller.set('date', moment('2014-03-25'));
         }
       });
 
@@ -50,17 +51,28 @@
   <body>
     <script type="text/x-handlebars">
       <h1>Examples of ui-calendar in action</h1>
-      <pre><code>\{{ui-calendar
-  selectedDates=dates}}
-</pre></code>
-      <div class="example">
-        {{ui-calendar selectedDates=dates}}
-      </div>
-      <ol>
-        {{#each day in dates}}
-          {{format-date date=day format="dddd, MMMM Do, YYYY"}}
-        {{/each}}
-      </ol>
+      <section>
+        <pre><code>\{{ui-calendar selectedDates=dates}}
+  </pre></code>
+        <div class="example">
+          {{ui-calendar selectedDates=dates}}
+        </div>
+        <ol>
+          {{#each day in dates}}
+            {{format-date date=day format="dddd, MMMM Do, YYYY"}}
+          {{/each}}
+        </ol>
+      </section>
+      <section>
+        <pre><code>\{{ui-calendar selectedDate=date}}
+  </pre></code>
+        <div class="example">
+          {{ui-calendar selectedDate=date}}
+        </div>
+        <p>
+          {{format-date date=date format="dddd, MMMM Do, YYYY"}}
+        </p>
+      </section>
     </script>
   </body>
 </html>
