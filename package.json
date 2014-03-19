@@ -1,7 +1,7 @@
 {
   "name": "ember-ui-calendar",
   "main": "dist/cjs/main.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A calendar component for Ember with a speedy month view",
   "author": "Carsten Nielsen <heycarsten@gmail.com>",
   "license": "MIT",
