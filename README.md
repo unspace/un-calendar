@@ -14,12 +14,12 @@ now it's just not quick enough.
 ### Features
 
 - Shows a month with _n_ selected days, _n_ disabled days
-- Also show the previous month and future month
-- Let the user move forward and backwards
-- Let the user go to the current month
-- Send an event when the user selects a day
-- Disable moving past the current month into the future or past
-- Disable user-controls in general
+- Can also show the previous month and future month
+- Lets the user move forward and backwards
+- Lets the user go to the current month
+- Sends an action when the user clicks a day
+- Ability to disable moving past the current month into the future or past
+- Ability disable user-controls in general
 - Renders quickly
 
 ### Using It
