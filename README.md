@@ -5,8 +5,8 @@
 ### Rationale
 
 HTMLBars looks very promising for template performance, but it's not with us
-yet. I needed to solve the month view problem in a light-weight Ember way
-without needing redundant third-party dependencies. Existing implementations
+yet. I needed a solution to the month view problem in a light-weight Ember way
+without adding redundant third-party dependencies. Existing implementations
 either wrap a third-party library or take an idiomatic Ember approach, which
 will be absolutely fine in the HTMLBars future, but right now it's just too
 slow for my use-cases.
@@ -20,6 +20,65 @@ slow for my use-cases.
 - Send an event when the user selects a day
 - Disable moving past the current month into the future or past
 - Disable user-controls in general
+
+### Using It
+
+_**A wild [calendar demo](http://emberjs.jsbin.com/komop/1/) appears!**_
+
+The `ui-calendar` component wraps everything up into a widget that you can use
+to display a calendar and allow you users to select one or _n_ dates:
+
+```html
+{{ui-calendar
+  month=momentObject
+  selectedDate=momentObject
+  selectedDates=arrayOfMomentObjects
+  disabledDates=arrayOfMomentObjects
+  todayLabel="<span>Today</span>"
+  prevLabel="<span>Raw HTML</span>"
+  nextLabel="<span>Raw HTML</span>"
+  showNextMonth=true|false
+  showPrevMonth=true|false
+  disableHeader=true|false
+  disableControls=true|false
+  disablePast=true|false,
+  disableFuture=true|false
+  disableManipulation=true|false
+  maxPastDate=momentObject
+  maxFutureDate=momentObject
+  select="dateSelected"}}
+```
+
+| Option            | Type             | Description                           |
+|:------------------|:-----------------|:--------------------------------------|
+| `month`           | moment           | The explicit month to render.         |
+| `selectedDate`    | moment           | Date to indicate as selected.         |
+| `selectedDates`   | array of moments | Dates to indicate as selected, use this or the above, both won't work. |
+| `disabledDates`   | array of moments | Dates to indicate as disabled.        |
+| `todayLabel`      | HTML string      | A label to use for the Today button   |
+| `prevLabel`       | HTML string      | A label to use for the previous month button |
+| `nextLabel`       | HTML string      | A label to use for the next month button |
+| `showNextMonth`   | boolean          | Show or hide the next month button    |
+| `showPrevMonth`   | boolean          | Show or hide the previous month button |
+| `disableHeader`   | boolean          | Show or hide the header               |
+| `disableControls` | boolean          | Show or hide the header controls      |
+| `disablePast`     | boolean          | Disable moving to past months         |
+| `disableFuture`   | boolean          | Disable moving to future months       |
+| `disableManipulation | boolean       | Disable built-in manipulation of `selectedDate` / `selectedDates` select action still sent |
+| `maxPastDate`     | moment           | Maximum past month                    |
+| `maxFutureDate`   | moment           | Maximum future month                  |
+| `select`          | action name      | Will fire this event with the selected moment when the user selects a date |
+
+The `ui-month` component is what powers the individual month views, you can use
+it if you want to build your own calendar functionality:
+
+```html
+{{ui-month
+  month=momentObject
+  selectedDates=arrayOfMomentObjects
+  disabledDates=arrayOfMomentObjects
+  select="dateSelected"}}
+```
 
 ### Development
 
