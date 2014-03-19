@@ -4,12 +4,12 @@
 
 ### Rationale
 
-HTMLBars looks very promising for template performance, but it's not with us
-yet. I needed a solution to the month view problem in a light-weight Ember way
-without adding redundant third-party dependencies. Existing implementations
-either wrap a third-party library or take an idiomatic Ember approach, which
-will be absolutely fine in the HTMLBars future, but right now it's just too
-slow for my use-cases.
+HTMLBars looks very promising for template performance, but it's not here yet.
+I wanted a solution to the month view problem that was light-weight,
+Ember-based, and that didn't have redundant third-party dependencies. Existing
+implementations either wrap a third-party library or take an idiomatic Ember
+approach, which will likely be absolutely fine in the HTMLBars future, but right
+now it's just not quick enough.
 
 ### Features
 
@@ -20,6 +20,7 @@ slow for my use-cases.
 - Send an event when the user selects a day
 - Disable moving past the current month into the future or past
 - Disable user-controls in general
+- Renders quickly
 
 ### Using It
 
