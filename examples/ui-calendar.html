@@ -20,8 +20,30 @@
     <script>
       App = Em.Application.create();
 
+      App.ApplicationRoute = Em.Route.extend({
+        setupController: function(controller) {
+          controller.set('dates', [
+            moment('2014-03-25'),
+            moment('2014-03-26')
+          ]);
+        }
+      });
+
       App.ApplicationController = Em.Controller.extend({
 
+      });
+
+      App.FormatDateComponent = Em.Component.extend({
+        layout: Em.Handlebars.compile('{{formatted}}'),
+        date: null,
+        format: null,
+
+        formatted: function() {
+          var date = this.get('date');
+          var format = this.get('format');
+
+          return date ? date.format(format) : null;
+        }.property('date', 'format')
       });
     </script>
   </head>
@@ -29,11 +51,16 @@
     <script type="text/x-handlebars">
       <h1>Examples of ui-calendar in action</h1>
       <pre><code>\{{ui-calendar
-  date=lastWeek}}
+  selectedDates=dates}}
 </pre></code>
       <div class="example">
-        {{ui-calendar date=lastWeek}}
+        {{ui-calendar selectedDates=dates}}
       </div>
+      <ol>
+        {{#each day in dates}}
+          {{format-date date=day format="dddd, MMMM Do, YYYY"}}
+        {{/each}}
+      </ol>
     </script>
   </body>
 </html>
