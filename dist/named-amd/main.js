@@ -94,16 +94,20 @@ define("ember-ui-calendar",
             return;
           }
 
-          if (this.hasDate(date)) {
-            this.removeDate(date);
-            return;
+          if (this.get('multiple')) {
+            if (this.hasDate(date)) {
+              this.removeDate(date);
+            } else {
+              this.addDate(date);
+            }
+          } else {
+            if (this.hasDate(date)) {
+              //this.get('selectedDates').clear();
+              this.set('selectedDate', null);
+            } else {
+              this.set('selectedDate', date);
+            }
           }
-
-          if (!this.get('multiple') && this.get('selectedDates.length')) {
-            return;
-          }
-
-          this.addDate(date);
         },
 
         prev: function() {
@@ -158,6 +162,12 @@ define("ember-ui-calendar",
       }.observesBefore('selectedDate'),
 
       selectedDateDidChange: function() {
+        var date = this.get('selectedDate');
+
+        if (!date) {
+          return;
+        }
+
         this.addDate(this.get('selectedDate'));
       }.observes('selectedDate'),
 
