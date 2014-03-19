@@ -24,7 +24,7 @@ now it's just not quick enough.
 
 ### Using It
 
-_**A wild [calendar demo](http://emberjs.jsbin.com/komop/1/) appears!**_
+_**A wild [calendar demo](http://emberjs.jsbin.com/komop/2/) appears!**_
 
 You can use the builds provided in the [`dist`](/dist) directory, if you don't
 know why there is a dist directory and just want a file to plop into your app
