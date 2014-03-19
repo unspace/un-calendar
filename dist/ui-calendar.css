@@ -12,7 +12,12 @@
   float: left;
   margin: 0;
   padding: 0;
-  margin-top: 20px; }
+  margin-top: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
 
 .ui-calendar-month {
   margin: 0;
