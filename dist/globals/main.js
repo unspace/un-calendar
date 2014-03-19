@@ -6,9 +6,9 @@ ember-ui-calendar
 License: https://github.com/heycarsten/ember-ui-calendar/blob/master/LICENSE
 */
 
-var UiCalendarComponent = _dereq_("./ui-calendar-component").UiCalendarComponent;
-var UiCalendarMonthComponent = _dereq_("./ui-calendar-month-component").UiCalendarMonthComponent;
-var UiCalendarTemplate = _dereq_("./ui-calendar-template").UiCalendarTemplate;
+var UiCalendarComponent = _dereq_("./ui-calendar-component")["default"] || _dereq_("./ui-calendar-component");
+var UiCalendarMonthComponent = _dereq_("./ui-calendar-month-component")["default"] || _dereq_("./ui-calendar-month-component");
+var UiCalendarTemplate = _dereq_("./ui-calendar-template")["default"] || _dereq_("./ui-calendar-template");
 var Application = window.Ember.Application;
 
 Application.initializer({

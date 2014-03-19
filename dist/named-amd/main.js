@@ -8,9 +8,9 @@ define("ember-ui-calendar",
     License: https://github.com/heycarsten/ember-ui-calendar/blob/master/LICENSE
     */
 
-    var UiCalendarComponent = __dependency1__.UiCalendarComponent;
-    var UiCalendarMonthComponent = __dependency2__.UiCalendarMonthComponent;
-    var UiCalendarTemplate = __dependency3__.UiCalendarTemplate;
+    var UiCalendarComponent = __dependency1__["default"] || __dependency1__;
+    var UiCalendarMonthComponent = __dependency2__["default"] || __dependency2__;
+    var UiCalendarTemplate = __dependency3__["default"] || __dependency3__;
     var Application = __dependency4__.Application;
 
     Application.initializer({
