@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Ember UI Calendar Examples</title>
+    <!-- <style link="../dist/ui-calendar.css"></style> -->
+    <link rel="stylesheet" href="http://localhost:4200/ui-calendar.css"></link>
+    <style>
+      html, body {
+        font-family: "Helvetica Neue", "Ariel";
+        font-size: 14px;
+        line-height: 1.5;
+      }
+    </style>
+    <script src="../bower_components/moment/moment.js"></script>
+    <script src="../bower_components/jquery/jquery.js"></script>
+    <script src="../bower_components/handlebars/handlebars.js"></script>
+    <script src="../bower_components/ember/ember.js"></script>
+    <!-- <script src="../dist/globals/main.js"></script> -->
+    <script src="http://localhost:4200/globals/main.js"></script>
+    <script>
+      App = Em.Application.create();
+
+      App.ApplicationController = Em.Controller.extend({
+
+      });
+    </script>
+  </head>
+  <body>
+    <script type="text/x-handlebars">
+      <h1>Examples of ui-calendar in action</h1>
+      <pre><code>\{{ui-calendar
+  date=lastWeek}}
+</pre></code>
+      <div class="example">
+        {{ui-calendar date=lastWeek}}
+      </div>
+    </script>
+  </body>
+</html>
