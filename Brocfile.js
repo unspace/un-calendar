@@ -21,7 +21,7 @@ lib = filterTemplates(lib, {
 });
 
 lib = filterES6Modules(lib, {
-  global:      'Ember.UiCalendar',
+  global:      'Un.Calendar',
   packageName: 'ember-ui-calendar',
   main:        'main',
 

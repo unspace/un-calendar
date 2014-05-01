@@ -1,30 +1,30 @@
-!function(e){if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),(f.Ember||(f.Ember={})).UiCalendar=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
+!function(e){if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else{var n;"undefined"!=typeof window?n=window:"undefined"!=typeof global?n=global:"undefined"!=typeof self&&(n=self),(n.Un||(n.Un={})).Calendar=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 "use strict";
 /*!
-ember-ui-calendar
+un-calendar
 (c) 2014 Carsten Nielsen
-License: https://github.com/heycarsten/ember-ui-calendar/blob/master/LICENSE
+License: https://github.com/unspace/un-calendar/blob/master/LICENSE
 */
 
-var UiCalendarComponent = _dereq_("./ui-calendar-component")["default"] || _dereq_("./ui-calendar-component");
-var UiCalendarMonthComponent = _dereq_("./ui-calendar-month-component")["default"] || _dereq_("./ui-calendar-month-component");
-var UiCalendarTemplate = _dereq_("./ui-calendar-template")["default"] || _dereq_("./ui-calendar-template");
+var UnCalendarComponent = _dereq_("./un-calendar-component")["default"] || _dereq_("./un-calendar-component");
+var UnCalendarMonthComponent = _dereq_("./un-calendar-month-component")["default"] || _dereq_("./un-calendar-month-component");
+var UnCalendarTemplate = _dereq_("./un-calendar-template")["default"] || _dereq_("./un-calendar-template");
 var Application = window.Ember.Application;
 
 Application.initializer({
-  name: 'ember-ui-calendar',
+  name: 'ember-un-calendar',
 
   initialize: function(container) {
-    container.register('template:components/ui-calendar', UiCalendarTemplate);
-    container.register('component:ui-calendar', UiCalendarComponent);
-    container.register('component:ui-calendar-month', UiCalendarMonthComponent);
+    container.register('template:components/un-calendar', UnCalendarTemplate);
+    container.register('component:un-calendar', UnCalendarComponent);
+    container.register('component:un-calendar-month', UnCalendarMonthComponent);
   }
 });
 
-exports.UiCalendarComponent = UiCalendarComponent;
-exports.UiCalendarMonthComponent = UiCalendarMonthComponent;
-exports.UiCalendarTemplate = UiCalendarTemplate;
-},{"./ui-calendar-component":2,"./ui-calendar-month-component":3,"./ui-calendar-template":4}],2:[function(_dereq_,module,exports){
+exports.UnCalendarComponent = UnCalendarComponent;
+exports.UnCalendarMonthComponent = UnCalendarMonthComponent;
+exports.UnCalendarTemplate = UnCalendarTemplate;
+},{"./un-calendar-component":2,"./un-calendar-month-component":3,"./un-calendar-template":4}],2:[function(_dereq_,module,exports){
 "use strict";
 var moment = window.moment["default"] || window.moment;
 var Component = window.Ember.Component;
@@ -38,7 +38,7 @@ function cpFormatMoment(key, format) {
 }
 
 exports["default"] = Component.extend({
-  classNames: 'ui-calendar',
+  classNames: 'un-calendar',
 
   prevLabel:           '&larr;',
   nextLabel:           '&rarr;',
@@ -301,7 +301,7 @@ function forEachSlot(month, iter) {
 
 exports["default"] = Component.extend({
   tagName:      'ol',
-  classNames:   'ui-calendar-month',
+  classNames:   'un-calendar-month',
   month:         null,
   selectedDates: null,
   disabledDates: null,
@@ -310,7 +310,7 @@ exports["default"] = Component.extend({
     this._super();
 
     if (!this.get('selectedDates')) {
-      throw 'you must provide selectedDates to ui-calendar-month';
+      throw 'you must provide selectedDates to un-calendar-month';
     }
   },
 
@@ -370,14 +370,14 @@ exports["default"] = Component.extend({
         attrs = {
           date:       slot.format('D'),
           jsonDate:   slot.format('YYYY-MM-DD'),
-          classNames: ['ui-calendar-slot', 'ui-calendar-day']
+          classNames: ['un-calendar-slot', 'un-calendar-day']
         };
 
         view.applyOptionsForDate(attrs, slot);
         attrs.classNames = attrs.classNames.join(' ');
         buff.push(DATE_SLOT_HBS(attrs));
       } else {
-        buff.push('<li class="ui-calendar-slot ui-calendar-empty"></li>');
+        buff.push('<li class="un-calendar-slot un-calendar-empty"></li>');
       }
     }
 
@@ -405,7 +405,7 @@ exports["default"] = Component.extend({
 });
 },{}],4:[function(_dereq_,module,exports){
 "use strict";
-exports["default"] = Ember.Handlebars.compile("{{#unless disableHeader}}\n  <div class=\"ui-calendar-header\">\n    {{#unless disableControls}}\n      <nav>\n        <button {{action \"prev\"}} {{bind-attr disabled=\"isPrevDisabled\"}} class=\"ui-calendar-prev\">\n          <span>{{{unbound prevLabel}}}</span>\n        </button>\n        <button {{action \"next\"}} {{bind-attr disabled=\"isNextDisabled\"}} class=\"ui-calendar-next\">\n          <span>{{{unbound nextLabel}}}</span>\n        </button>\n        {{#unless disableTodayButton}}\n          <button {{action \"today\"}} class=\"ui-calendar-today\">\n            <span>{{{unbound todayLabel}}}</span>\n          </button>\n        {{/unless}}\n      </nav>\n    {{/unless}}\n  </div>\n{{/unless}}\n\n<div class=\"ui-calendar-months\">\n  {{#if showPrevMonth}}\n    <div class=\"ui-calendar-prev-month ui-calendar-month-container\">\n      <header>\n        {{prevMonthLabel}}\n      </header>\n      {{ui-calendar-month\n        month=prevMonth\n        selectedDates=selectedDates\n        disabledDates=disabledDates\n        select=\"dateSelected\"}}\n    </div>\n  {{/if}}\n\n  <div class=\"ui-calendar-current-month ui-calendar-month-container\">\n    <header>\n      {{monthLabel}}\n    </header>\n    {{ui-calendar-month\n      month=month\n      selectedDates=selectedDates\n      disabledDates=disabledDates\n      select=\"dateSelected\"}}\n  </div>\n\n  {{#if showNextMonth}}\n    <div class=\"ui-calendar-next-month ui-calendar-month-container\">\n      <header>\n        {{nextMonthLabel}}\n      </header>\n      {{ui-calendar-month\n        month=nextMonth\n        selectedDates=selectedDates\n        disabledDates=disabledDates\n        select=\"dateSelected\"}}\n    </div>\n  {{/if}}\n</div>\n");
+exports["default"] = Ember.Handlebars.compile("{{#unless disableHeader}}\n  <div class=\"un-calendar-header\">\n    {{#unless disableControls}}\n      <nav>\n        <button {{action \"prev\"}} {{bind-attr disabled=\"isPrevDisabled\"}} class=\"un-calendar-prev\">\n          <span>{{{unbound prevLabel}}}</span>\n        </button>\n        <button {{action \"next\"}} {{bind-attr disabled=\"isNextDisabled\"}} class=\"un-calendar-next\">\n          <span>{{{unbound nextLabel}}}</span>\n        </button>\n        {{#unless disableTodayButton}}\n          <button {{action \"today\"}} class=\"un-calendar-today\">\n            <span>{{{unbound todayLabel}}}</span>\n          </button>\n        {{/unless}}\n      </nav>\n    {{/unless}}\n  </div>\n{{/unless}}\n\n<div class=\"un-calendar-months\">\n  {{#if showPrevMonth}}\n    <div class=\"un-calendar-prev-month un-calendar-month-container\">\n      <header>\n        {{prevMonthLabel}}\n      </header>\n      {{un-calendar-month\n        month=prevMonth\n        selectedDates=selectedDates\n        disabledDates=disabledDates\n        select=\"dateSelected\"}}\n    </div>\n  {{/if}}\n\n  <div class=\"un-calendar-current-month un-calendar-month-container\">\n    <header>\n      {{monthLabel}}\n    </header>\n    {{un-calendar-month\n      month=month\n      selectedDates=selectedDates\n      disabledDates=disabledDates\n      select=\"dateSelected\"}}\n  </div>\n\n  {{#if showNextMonth}}\n    <div class=\"un-calendar-next-month un-calendar-month-container\">\n      <header>\n        {{nextMonthLabel}}\n      </header>\n      {{un-calendar-month\n        month=nextMonth\n        selectedDates=selectedDates\n        disabledDates=disabledDates\n        select=\"dateSelected\"}}\n    </div>\n  {{/if}}\n</div>\n");
 },{}]},{},[1])
 (1)
 });

@@ -1,10 +1,11 @@
 {
-  "name": "ember-ui-calendar",
+  "name": "un-calendar",
   "version": "0.1.2",
   "license": "MIT",
   "main": "lib/main.js",
   "authors": [
-    "Carsten Nielsen <heycarsten@gmail.com>"
+    "Carsten Nielsen <heycarsten@gmail.com>",
+    "Mattia Gheda <ghedamat@gmail.com>"
   ],
 
   "moduleFormat": [
@@ -14,7 +15,7 @@
   ],
 
   "ignore": [
-    "bower_components",
+    "vendor",
     "node_modules",
     "package.json",
     "testem.json",

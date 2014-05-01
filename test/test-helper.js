@@ -4,8 +4,9 @@ emq.globalize();
 
 setResolver(Ember.DefaultResolver.extend({
   testSubjects: {
-    'component:ui-calendar-component': Ember.UiCalendar.UiCalendarComponent,
-    'template:components/ui-calendar': Ember.UiCalendar.UiCalendarTemplate
+    'component:un-calendar': Un.Calendar.UnCalendarComponent,
+    'component:un-calendar-month': Un.Calendar.UnCalendarMonthComponent,
+    'template:components/un-calendar': Un.Calendar.UnCalendarTemplate
   },
   resolve: function(fullName) {
     return this.testSubjects[fullName] || this._super.apply(this, arguments);

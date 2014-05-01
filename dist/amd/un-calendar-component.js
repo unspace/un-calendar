@@ -14,7 +14,7 @@ define(
     }
 
     __exports__["default"] = Component.extend({
-      classNames: 'ui-calendar',
+      classNames: 'un-calendar',
 
       prevLabel:           '&larr;',
       nextLabel:           '&rarr;',

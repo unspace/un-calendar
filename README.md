@@ -1,4 +1,4 @@
-# Ember UI Calendar
+# Un Calendar
 
 #### A calendar component for Ember with a _speedy_ month view
 
@@ -31,13 +31,13 @@ know why there is a dist directory and just want a file to plop into your app
 you probably want [`dist/globals/main.js`](/dist/globals/main.js). There is also
 an very basic CSS file that you can use as a starting point for styling the
 calendar and month components located in
-[`dist/ui-calendar.css`](/dist/ui-calendar.css).
+[`dist/un-calendar.css`](/dist/un-calendar.css).
 
-The `ui-calendar` component wraps everything up into a widget that you can use
+The `un-calendar` component wraps everything up into a widget that you can use
 to display a calendar and allow you users to select one or _n_ dates:
 
 ```html
-{{ui-calendar
+{{un-calendar
   month=momentObject
   selectedDate=momentObject
   selectedDates=arrayOfMomentObjects
@@ -77,11 +77,11 @@ to display a calendar and allow you users to select one or _n_ dates:
 | `maxFutureDate`   | moment           | Maximum future month                  |
 | `select`          | action name      | Will fire this event with the selected moment when the user selects a date |
 
-The `ui-month` component is what powers the individual month views, you can use
+The `un-month` component is what powers the individual month views, you can use
 it if you want to build your own calendar functionality:
 
 ```html
-{{ui-month
+{{un-month
   month=momentObject
   selectedDates=arrayOfMomentObjects
   disabledDates=arrayOfMomentObjects

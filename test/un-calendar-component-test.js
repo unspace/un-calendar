@@ -1,4 +1,8 @@
-moduleForComponent('ui-calendar-component');
+moduleForComponent('un-calendar', 'UiCalendar', {
+  needs: [
+    'component:un-calendar-month'
+  ]
+});
 
 test('renders', function(){
   expect(2)

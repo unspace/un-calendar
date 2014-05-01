@@ -52,7 +52,7 @@ function forEachSlot(month, iter) {
 
 exports["default"] = Component.extend({
   tagName:      'ol',
-  classNames:   'ui-calendar-month',
+  classNames:   'un-calendar-month',
   month:         null,
   selectedDates: null,
   disabledDates: null,
@@ -61,7 +61,7 @@ exports["default"] = Component.extend({
     this._super();
 
     if (!this.get('selectedDates')) {
-      throw 'you must provide selectedDates to ui-calendar-month';
+      throw 'you must provide selectedDates to un-calendar-month';
     }
   },
 
@@ -121,14 +121,14 @@ exports["default"] = Component.extend({
         attrs = {
           date:       slot.format('D'),
           jsonDate:   slot.format('YYYY-MM-DD'),
-          classNames: ['ui-calendar-slot', 'ui-calendar-day']
+          classNames: ['un-calendar-slot', 'un-calendar-day']
         };
 
         view.applyOptionsForDate(attrs, slot);
         attrs.classNames = attrs.classNames.join(' ');
         buff.push(DATE_SLOT_HBS(attrs));
       } else {
-        buff.push('<li class="ui-calendar-slot ui-calendar-empty"></li>');
+        buff.push('<li class="un-calendar-slot un-calendar-empty"></li>');
       }
     }
 

@@ -1,25 +1,25 @@
 "use strict";
 /*!
-ember-ui-calendar
+un-calendar
 (c) 2014 Carsten Nielsen
-License: https://github.com/heycarsten/ember-ui-calendar/blob/master/LICENSE
+License: https://github.com/unspace/un-calendar/blob/master/LICENSE
 */
 
-var UiCalendarComponent = require("./ui-calendar-component")["default"] || require("./ui-calendar-component");
-var UiCalendarMonthComponent = require("./ui-calendar-month-component")["default"] || require("./ui-calendar-month-component");
-var UiCalendarTemplate = require("./ui-calendar-template")["default"] || require("./ui-calendar-template");
+var UnCalendarComponent = require("./un-calendar-component")["default"] || require("./un-calendar-component");
+var UnCalendarMonthComponent = require("./un-calendar-month-component")["default"] || require("./un-calendar-month-component");
+var UnCalendarTemplate = require("./un-calendar-template")["default"] || require("./un-calendar-template");
 var Application = require("ember").Application;
 
 Application.initializer({
-  name: 'ember-ui-calendar',
+  name: 'ember-un-calendar',
 
   initialize: function(container) {
-    container.register('template:components/ui-calendar', UiCalendarTemplate);
-    container.register('component:ui-calendar', UiCalendarComponent);
-    container.register('component:ui-calendar-month', UiCalendarMonthComponent);
+    container.register('template:components/un-calendar', UnCalendarTemplate);
+    container.register('component:un-calendar', UnCalendarComponent);
+    container.register('component:un-calendar-month', UnCalendarMonthComponent);
   }
 });
 
-exports.UiCalendarComponent = UiCalendarComponent;
-exports.UiCalendarMonthComponent = UiCalendarMonthComponent;
-exports.UiCalendarTemplate = UiCalendarTemplate;
+exports.UnCalendarComponent = UnCalendarComponent;
+exports.UnCalendarMonthComponent = UnCalendarMonthComponent;
+exports.UnCalendarTemplate = UnCalendarTemplate;
