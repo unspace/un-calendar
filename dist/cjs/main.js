@@ -22,3 +22,4 @@ Application.initializer({
 
 exports.UiCalendarComponent = UiCalendarComponent;
 exports.UiCalendarMonthComponent = UiCalendarMonthComponent;
+exports.UiCalendarTemplate = UiCalendarTemplate;

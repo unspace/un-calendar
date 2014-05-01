@@ -25,6 +25,7 @@ define("ember-ui-calendar",
 
     __exports__.UiCalendarComponent = UiCalendarComponent;
     __exports__.UiCalendarMonthComponent = UiCalendarMonthComponent;
+    __exports__.UiCalendarTemplate = UiCalendarTemplate;
   });define("ember-ui-calendar/ui-calendar-component",
   ["moment","ember","exports"],
   function(__dependency1__, __dependency2__, __exports__) {
@@ -102,7 +103,6 @@ define("ember-ui-calendar",
             }
           } else {
             if (this.hasDate(date)) {
-              //this.get('selectedDates').clear();
               this.set('selectedDate', null);
             } else {
               this.set('selectedDate', date);

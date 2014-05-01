@@ -72,7 +72,6 @@ exports["default"] = Component.extend({
         }
       } else {
         if (this.hasDate(date)) {
-          //this.get('selectedDates').clear();
           this.set('selectedDate', null);
         } else {
           this.set('selectedDate', date);

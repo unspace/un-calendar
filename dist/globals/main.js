@@ -23,6 +23,7 @@ Application.initializer({
 
 exports.UiCalendarComponent = UiCalendarComponent;
 exports.UiCalendarMonthComponent = UiCalendarMonthComponent;
+exports.UiCalendarTemplate = UiCalendarTemplate;
 },{"./ui-calendar-component":2,"./ui-calendar-month-component":3,"./ui-calendar-template":4}],2:[function(_dereq_,module,exports){
 "use strict";
 var moment = window.moment["default"] || window.moment;
@@ -98,7 +99,6 @@ exports["default"] = Component.extend({
         }
       } else {
         if (this.hasDate(date)) {
-          //this.get('selectedDates').clear();
           this.set('selectedDate', null);
         } else {
           this.set('selectedDate', date);

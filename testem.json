@@ -1,12 +1,13 @@
 {
-  "framework": "jasmine2",
+  "framework": "qunit",
   "src_files": [
-    "bower_components/jquery/jquery.js",
-    "bower_components/moment/moment.js",
-    "bower_components/handlebars/handlebars.js",
-    "bower_components/ember/ember.js",
-    "dist/globals/main.js",
+    "vendor/jquery/jquery.js",
+    "vendor/handlebars/handlebars.js",
+    "vendor/ember/ember.js",
+    "vendor/ember-qunit/dist/globals/main.js",
+    "vendor/moment/moment.js",
     "http://localhost:4200/globals/main.js",
-    "test/**/*-spec.js"
+    "test/test-helper.js",
+    "test/**/*-test.js"
   ]
 }

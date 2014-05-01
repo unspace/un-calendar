@@ -25,4 +25,5 @@ define(
 
     __exports__.UiCalendarComponent = UiCalendarComponent;
     __exports__.UiCalendarMonthComponent = UiCalendarMonthComponent;
+    __exports__.UiCalendarTemplate = UiCalendarTemplate;
   });
