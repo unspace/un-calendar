@@ -1,31 +1,5 @@
 !function(e){if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else{var n;"undefined"!=typeof window?n=window:"undefined"!=typeof global?n=global:"undefined"!=typeof self&&(n=self),(n.Un||(n.Un={})).Calendar=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 "use strict";
-/*!
-un-calendar
-(c) 2014 Carsten Nielsen
-License: https://github.com/unspace/un-calendar/blob/master/LICENSE
-*/
-
-var UnCalendarComponent = _dereq_("./un-calendar-component")["default"] || _dereq_("./un-calendar-component");
-var UnCalendarMonthComponent = _dereq_("./un-calendar-month-component")["default"] || _dereq_("./un-calendar-month-component");
-var UnCalendarTemplate = _dereq_("./un-calendar-template")["default"] || _dereq_("./un-calendar-template");
-var Application = window.Ember.Application;
-
-Application.initializer({
-  name: 'ember-un-calendar',
-
-  initialize: function(container) {
-    container.register('template:components/un-calendar', UnCalendarTemplate);
-    container.register('component:un-calendar', UnCalendarComponent);
-    container.register('component:un-calendar-month', UnCalendarMonthComponent);
-  }
-});
-
-exports.UnCalendarComponent = UnCalendarComponent;
-exports.UnCalendarMonthComponent = UnCalendarMonthComponent;
-exports.UnCalendarTemplate = UnCalendarTemplate;
-},{"./un-calendar-component":2,"./un-calendar-month-component":3,"./un-calendar-template":4}],2:[function(_dereq_,module,exports){
-"use strict";
 var moment = window.moment["default"] || window.moment;
 var Component = window.Ember.Component;
 var computed = window.Ember.computed;
@@ -246,7 +220,7 @@ exports["default"] = Component.extend({
   nextMonthLabel: cpFormatMoment('nextMonth', 'MMMM YYYY'),
   monthLabel:     cpFormatMoment('month', 'MMMM YYYY')
 });
-},{}],3:[function(_dereq_,module,exports){
+},{}],2:[function(_dereq_,module,exports){
 "use strict";
 var Handlebars = window.Handlebars["default"] || window.Handlebars;
 var moment = window.moment["default"] || window.moment;
@@ -403,9 +377,35 @@ exports["default"] = Component.extend({
     }
   },
 });
-},{}],4:[function(_dereq_,module,exports){
+},{}],3:[function(_dereq_,module,exports){
 "use strict";
 exports["default"] = Ember.Handlebars.compile("{{#unless disableHeader}}\n  <div class=\"un-calendar-header\">\n    {{#unless disableControls}}\n      <nav>\n        <button {{action \"prev\"}} {{bind-attr disabled=\"isPrevDisabled\"}} class=\"un-calendar-prev\">\n          <span>{{{unbound prevLabel}}}</span>\n        </button>\n        <button {{action \"next\"}} {{bind-attr disabled=\"isNextDisabled\"}} class=\"un-calendar-next\">\n          <span>{{{unbound nextLabel}}}</span>\n        </button>\n        {{#unless disableTodayButton}}\n          <button {{action \"today\"}} class=\"un-calendar-today\">\n            <span>{{{unbound todayLabel}}}</span>\n          </button>\n        {{/unless}}\n      </nav>\n    {{/unless}}\n  </div>\n{{/unless}}\n\n<div class=\"un-calendar-months\">\n  {{#if showPrevMonth}}\n    <div class=\"un-calendar-prev-month un-calendar-month-container\">\n      <header>\n        {{prevMonthLabel}}\n      </header>\n      {{un-calendar-month\n        month=prevMonth\n        selectedDates=selectedDates\n        disabledDates=disabledDates\n        select=\"dateSelected\"}}\n    </div>\n  {{/if}}\n\n  <div class=\"un-calendar-current-month un-calendar-month-container\">\n    <header>\n      {{monthLabel}}\n    </header>\n    {{un-calendar-month\n      month=month\n      selectedDates=selectedDates\n      disabledDates=disabledDates\n      select=\"dateSelected\"}}\n  </div>\n\n  {{#if showNextMonth}}\n    <div class=\"un-calendar-next-month un-calendar-month-container\">\n      <header>\n        {{nextMonthLabel}}\n      </header>\n      {{un-calendar-month\n        month=nextMonth\n        selectedDates=selectedDates\n        disabledDates=disabledDates\n        select=\"dateSelected\"}}\n    </div>\n  {{/if}}\n</div>\n");
-},{}]},{},[1])
-(1)
+},{}],4:[function(_dereq_,module,exports){
+"use strict";
+/*!
+un-calendar
+(c) 2014 Carsten Nielsen
+License: https://github.com/unspace/un-calendar/blob/master/LICENSE
+*/
+
+var UnCalendarComponent = _dereq_("./un-calendar-component")["default"] || _dereq_("./un-calendar-component");
+var UnCalendarMonthComponent = _dereq_("./un-calendar-month-component")["default"] || _dereq_("./un-calendar-month-component");
+var UnCalendarTemplate = _dereq_("./un-calendar-template")["default"] || _dereq_("./un-calendar-template");
+var Application = window.Ember.Application;
+
+Application.initializer({
+  name: 'ember-un-calendar',
+
+  initialize: function(container) {
+    container.register('template:components/un-calendar', UnCalendarTemplate);
+    container.register('component:un-calendar', UnCalendarComponent);
+    container.register('component:un-calendar-month', UnCalendarMonthComponent);
+  }
+});
+
+exports.UnCalendarComponent = UnCalendarComponent;
+exports.UnCalendarMonthComponent = UnCalendarMonthComponent;
+exports.UnCalendarTemplate = UnCalendarTemplate;
+},{"./un-calendar-component":1,"./un-calendar-month-component":2,"./un-calendar-template":3}]},{},[4])
+(4)
 });

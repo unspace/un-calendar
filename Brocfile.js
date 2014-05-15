@@ -9,7 +9,7 @@ var lib                 = 'lib';
 var scss                = 'scss';
 
 function filterES6Modules(tree, opts) {
-  return mergeTrees(vndFilterES6Modules(tree, opts));
+  return vndFilterES6Modules(tree, opts);
 }
 
 var styles = compileSass([scss], 'ui-calendar.scss', 'ui-calendar.css');
@@ -22,8 +22,8 @@ lib = filterTemplates(lib, {
 
 lib = filterES6Modules(lib, {
   global:      'Un.Calendar',
-  packageName: 'ember-ui-calendar',
-  main:        'main',
+  packageName: 'un-calendar',
+  main:        'un-calendar',
 
   shim: {
     ember:      'Ember',

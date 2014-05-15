@@ -8,8 +8,8 @@
   "homepage": "https://github.com/heycarsten/ember-ui-calendar",
   "devDependencies": {
     "testem": "^0.6.9",
-    "broccoli": "^0.9.0",
-    "broccoli-dist-es6-module": "^0.1.8",
+    "broccoli": "^0.12.0",
+    "broccoli-dist-es6-module": "git+https://github.com/ghedamat/broccoli-dist-es6-module#mattia/use-main-name-for-all-builds",
     "broccoli-template": "^0.1.0",
     "broccoli-static-compiler": "0.1.4",
     "broccoli-autoprefixer": "^0.1.0",
