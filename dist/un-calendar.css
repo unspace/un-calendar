@@ -1,13 +1,13 @@
-.ui-calendar {
+.un-calendar {
   font-size: 14px;
   background: #fff; }
 
-.ui-calendar-months:after {
+.un-calendar-months:after {
   content: "";
   display: table;
   clear: both; }
 
-.ui-calendar-month-container {
+.un-calendar-month-container {
   width: 200px;
   float: left;
   margin: 0;
@@ -19,30 +19,30 @@
   -ms-user-select: none;
   user-select: none; }
 
-.ui-calendar-month {
+.un-calendar-month {
   margin: 0;
   padding: 0; }
 
-.ui-calendar-header {
+.un-calendar-header {
   position: relative;
   line-height: 22px; }
-  .ui-calendar-header h1 {
+  .un-calendar-header h1 {
     font-size: 14px;
     text-align: center; }
-  .ui-calendar-header button {
+  .un-calendar-header button {
     position: absolute;
     top: 0; }
 
-.ui-calendar-prev {
+.un-calendar-prev {
   left: 0; }
 
-.ui-calendar-next {
+.un-calendar-next {
   right: 0; }
 
-.ui-calendar-today {
+.un-calendar-today {
   right: 30px; }
 
-.ui-calendar-slot {
+.un-calendar-slot {
   float: left;
   list-style: none;
   text-align: center;
@@ -55,18 +55,18 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
-  .ui-calendar-slot.is-today {
+  .un-calendar-slot.is-today {
     background: #edc; }
-  .ui-calendar-slot.is-selected {
+  .un-calendar-slot.is-selected {
     background: #cde; }
-  .ui-calendar-slot.is-disabled {
+  .un-calendar-slot.is-disabled {
     background: #eee;
     color: #999;
     cursor: default; }
 
-.ui-calendar-day {
+.un-calendar-day {
   cursor: pointer; }
 
-.ui-calendar-empty {
+.un-calendar-empty {
   cursor: default;
   background: #eee; }

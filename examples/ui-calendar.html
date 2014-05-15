@@ -1,9 +1,8 @@
 <!doctype html>
 <html>
   <head>
-    <title>Ember UI Calendar Examples</title>
-    <!-- <style link="../dist/ui-calendar.css"></style> -->
-    <link rel="stylesheet" href="http://localhost:4200/ui-calendar.css"></link>
+    <title>Un Calendar Examples</title>
+    <link rel="stylesheet" href="http://localhost:4200/un-calendar.css"></link>
     <style>
       html, body {
         font-family: "Helvetica Neue", "Ariel";
@@ -11,12 +10,11 @@
         line-height: 1.5;
       }
     </style>
-    <script src="../bower_components/moment/moment.js"></script>
-    <script src="../bower_components/jquery/jquery.js"></script>
-    <script src="../bower_components/handlebars/handlebars.js"></script>
-    <script src="../bower_components/ember/ember.js"></script>
-    <!-- <script src="../dist/globals/main.js"></script> -->
-    <script src="http://localhost:4200/globals/main.js"></script>
+    <script src="../vendor/moment/moment.js"></script>
+    <script src="../vendor/jquery/jquery.js"></script>
+    <script src="../vendor/handlebars/handlebars.js"></script>
+    <script src="../vendor/ember/ember.js"></script>
+    <script src="http://localhost:4200/globals/un-calendar.js"></script>
     <script>
       App = Em.Application.create();
 
@@ -50,12 +48,12 @@
   </head>
   <body>
     <script type="text/x-handlebars">
-      <h1>Examples of ui-calendar in action</h1>
+      <h1>Examples of un-calendar in action</h1>
       <section>
-        <pre><code>\{{ui-calendar selectedDates=dates}}
+        <pre><code>\{{un-calendar selectedDates=dates}}
   </pre></code>
         <div class="example">
-          {{ui-calendar selectedDates=dates}}
+          {{un-calendar selectedDates=dates}}
         </div>
         <ol>
           {{#each day in dates}}
@@ -64,10 +62,10 @@
         </ol>
       </section>
       <section>
-        <pre><code>\{{ui-calendar selectedDate=date}}
+        <pre><code>\{{un-calendar selectedDate=date}}
   </pre></code>
         <div class="example">
-          {{ui-calendar selectedDate=date}}
+          {{un-calendar selectedDate=date}}
         </div>
         <p>
           {{format-date date=date format="dddd, MMMM Do, YYYY"}}

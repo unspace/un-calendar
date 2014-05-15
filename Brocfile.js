@@ -12,7 +12,7 @@ function filterES6Modules(tree, opts) {
   return vndFilterES6Modules(tree, opts);
 }
 
-var styles = compileSass([scss], 'ui-calendar.scss', 'ui-calendar.css');
+var styles = compileSass([scss], 'un-calendar.scss', 'un-calendar.css');
 styles = autoprefixer(styles);
 
 var templates = pickFiles(lib, {
