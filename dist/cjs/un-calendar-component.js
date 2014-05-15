@@ -1,5 +1,7 @@
-import moment from 'moment';
-import { Component, computed } from 'ember';
+"use strict";
+var moment = require("moment")["default"] || require("moment");
+var Component = require("ember").Component;
+var computed = require("ember").computed;
 
 function cpFormatMoment(key, format) {
   return computed(function() {
@@ -8,8 +10,8 @@ function cpFormatMoment(key, format) {
   }).property(key);
 }
 
-export default Component.extend({
-  classNames: 'ui-calendar',
+exports["default"] = Component.extend({
+  classNames: 'un-calendar',
 
   prevLabel:           '&larr;',
   nextLabel:           '&rarr;',

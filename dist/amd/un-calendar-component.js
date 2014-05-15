@@ -14,7 +14,7 @@ define(
     }
 
     __exports__["default"] = Component.extend({
-      classNames: 'ui-calendar',
+      classNames: 'un-calendar',
 
       prevLabel:           '&larr;',
       nextLabel:           '&rarr;',
@@ -75,7 +75,6 @@ define(
             }
           } else {
             if (this.hasDate(date)) {
-              //this.get('selectedDates').clear();
               this.set('selectedDate', null);
             } else {
               this.set('selectedDate', date);

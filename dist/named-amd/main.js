@@ -1,31 +1,32 @@
 define("ember-ui-calendar",
-  ["./ui-calendar-component","./ui-calendar-month-component","./ui-calendar-template","ember","exports"],
+  ["./un-calendar-component","./un-calendar-month-component","./un-calendar-template","ember","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __exports__) {
     "use strict";
     /*!
-    ember-ui-calendar
+    un-calendar
     (c) 2014 Carsten Nielsen
-    License: https://github.com/heycarsten/ember-ui-calendar/blob/master/LICENSE
+    License: https://github.com/unspace/un-calendar/blob/master/LICENSE
     */
 
-    var UiCalendarComponent = __dependency1__["default"] || __dependency1__;
-    var UiCalendarMonthComponent = __dependency2__["default"] || __dependency2__;
-    var UiCalendarTemplate = __dependency3__["default"] || __dependency3__;
+    var UnCalendarComponent = __dependency1__["default"] || __dependency1__;
+    var UnCalendarMonthComponent = __dependency2__["default"] || __dependency2__;
+    var UnCalendarTemplate = __dependency3__["default"] || __dependency3__;
     var Application = __dependency4__.Application;
 
     Application.initializer({
-      name: 'ember-ui-calendar',
+      name: 'ember-un-calendar',
 
       initialize: function(container) {
-        container.register('template:components/ui-calendar', UiCalendarTemplate);
-        container.register('component:ui-calendar', UiCalendarComponent);
-        container.register('component:ui-calendar-month', UiCalendarMonthComponent);
+        container.register('template:components/un-calendar', UnCalendarTemplate);
+        container.register('component:un-calendar', UnCalendarComponent);
+        container.register('component:un-calendar-month', UnCalendarMonthComponent);
       }
     });
 
-    __exports__.UiCalendarComponent = UiCalendarComponent;
-    __exports__.UiCalendarMonthComponent = UiCalendarMonthComponent;
-  });define("ember-ui-calendar/ui-calendar-component",
+    __exports__.UnCalendarComponent = UnCalendarComponent;
+    __exports__.UnCalendarMonthComponent = UnCalendarMonthComponent;
+    __exports__.UnCalendarTemplate = UnCalendarTemplate;
+  });define("ember-ui-calendar/un-calendar-component",
   ["moment","ember","exports"],
   function(__dependency1__, __dependency2__, __exports__) {
     "use strict";
@@ -41,7 +42,7 @@ define("ember-ui-calendar",
     }
 
     __exports__["default"] = Component.extend({
-      classNames: 'ui-calendar',
+      classNames: 'un-calendar',
 
       prevLabel:           '&larr;',
       nextLabel:           '&rarr;',
@@ -102,7 +103,6 @@ define("ember-ui-calendar",
             }
           } else {
             if (this.hasDate(date)) {
-              //this.get('selectedDates').clear();
               this.set('selectedDate', null);
             } else {
               this.set('selectedDate', date);
@@ -250,7 +250,7 @@ define("ember-ui-calendar",
       nextMonthLabel: cpFormatMoment('nextMonth', 'MMMM YYYY'),
       monthLabel:     cpFormatMoment('month', 'MMMM YYYY')
     });
-  });define("ember-ui-calendar/ui-calendar-month-component",
+  });define("ember-ui-calendar/un-calendar-month-component",
   ["handlebars","moment","ember","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __exports__) {
     "use strict";
@@ -307,7 +307,7 @@ define("ember-ui-calendar",
 
     __exports__["default"] = Component.extend({
       tagName:      'ol',
-      classNames:   'ui-calendar-month',
+      classNames:   'un-calendar-month',
       month:         null,
       selectedDates: null,
       disabledDates: null,
@@ -316,7 +316,7 @@ define("ember-ui-calendar",
         this._super();
 
         if (!this.get('selectedDates')) {
-          throw 'you must provide selectedDates to ui-calendar-month';
+          throw 'you must provide selectedDates to un-calendar-month';
         }
       },
 
@@ -376,14 +376,14 @@ define("ember-ui-calendar",
             attrs = {
               date:       slot.format('D'),
               jsonDate:   slot.format('YYYY-MM-DD'),
-              classNames: ['ui-calendar-slot', 'ui-calendar-day']
+              classNames: ['un-calendar-slot', 'un-calendar-day']
             };
 
             view.applyOptionsForDate(attrs, slot);
             attrs.classNames = attrs.classNames.join(' ');
             buff.push(DATE_SLOT_HBS(attrs));
           } else {
-            buff.push('<li class="ui-calendar-slot ui-calendar-empty"></li>');
+            buff.push('<li class="un-calendar-slot un-calendar-empty"></li>');
           }
         }
 
@@ -409,9 +409,9 @@ define("ember-ui-calendar",
         }
       },
     });
-  });define("ember-ui-calendar/ui-calendar-template",
+  });define("ember-ui-calendar/un-calendar-template",
   ["exports"],
   function(__exports__) {
     "use strict";
-    __exports__["default"] = Ember.Handlebars.compile("{{#unless disableHeader}}\n  <div class=\"ui-calendar-header\">\n    {{#unless disableControls}}\n      <nav>\n        <button {{action \"prev\"}} {{bind-attr disabled=\"isPrevDisabled\"}} class=\"ui-calendar-prev\">\n          <span>{{{unbound prevLabel}}}</span>\n        </button>\n        <button {{action \"next\"}} {{bind-attr disabled=\"isNextDisabled\"}} class=\"ui-calendar-next\">\n          <span>{{{unbound nextLabel}}}</span>\n        </button>\n        {{#unless disableTodayButton}}\n          <button {{action \"today\"}} class=\"ui-calendar-today\">\n            <span>{{{unbound todayLabel}}}</span>\n          </button>\n        {{/unless}}\n      </nav>\n    {{/unless}}\n  </div>\n{{/unless}}\n\n<div class=\"ui-calendar-months\">\n  {{#if showPrevMonth}}\n    <div class=\"ui-calendar-prev-month ui-calendar-month-container\">\n      <header>\n        {{prevMonthLabel}}\n      </header>\n      {{ui-calendar-month\n        month=prevMonth\n        selectedDates=selectedDates\n        disabledDates=disabledDates\n        select=\"dateSelected\"}}\n    </div>\n  {{/if}}\n\n  <div class=\"ui-calendar-current-month ui-calendar-month-container\">\n    <header>\n      {{monthLabel}}\n    </header>\n    {{ui-calendar-month\n      month=month\n      selectedDates=selectedDates\n      disabledDates=disabledDates\n      select=\"dateSelected\"}}\n  </div>\n\n  {{#if showNextMonth}}\n    <div class=\"ui-calendar-next-month ui-calendar-month-container\">\n      <header>\n        {{nextMonthLabel}}\n      </header>\n      {{ui-calendar-month\n        month=nextMonth\n        selectedDates=selectedDates\n        disabledDates=disabledDates\n        select=\"dateSelected\"}}\n    </div>\n  {{/if}}\n</div>\n");
+    __exports__["default"] = Ember.Handlebars.compile("{{#unless disableHeader}}\n  <div class=\"un-calendar-header\">\n    {{#unless disableControls}}\n      <nav>\n        <button {{action \"prev\"}} {{bind-attr disabled=\"isPrevDisabled\"}} class=\"un-calendar-prev\">\n          <span>{{{unbound prevLabel}}}</span>\n        </button>\n        <button {{action \"next\"}} {{bind-attr disabled=\"isNextDisabled\"}} class=\"un-calendar-next\">\n          <span>{{{unbound nextLabel}}}</span>\n        </button>\n        {{#unless disableTodayButton}}\n          <button {{action \"today\"}} class=\"un-calendar-today\">\n            <span>{{{unbound todayLabel}}}</span>\n          </button>\n        {{/unless}}\n      </nav>\n    {{/unless}}\n  </div>\n{{/unless}}\n\n<div class=\"un-calendar-months\">\n  {{#if showPrevMonth}}\n    <div class=\"un-calendar-prev-month un-calendar-month-container\">\n      <header>\n        {{prevMonthLabel}}\n      </header>\n      {{un-calendar-month\n        month=prevMonth\n        selectedDates=selectedDates\n        disabledDates=disabledDates\n        select=\"dateSelected\"}}\n    </div>\n  {{/if}}\n\n  <div class=\"un-calendar-current-month un-calendar-month-container\">\n    <header>\n      {{monthLabel}}\n    </header>\n    {{un-calendar-month\n      month=month\n      selectedDates=selectedDates\n      disabledDates=disabledDates\n      select=\"dateSelected\"}}\n  </div>\n\n  {{#if showNextMonth}}\n    <div class=\"un-calendar-next-month un-calendar-month-container\">\n      <header>\n        {{nextMonthLabel}}\n      </header>\n      {{un-calendar-month\n        month=nextMonth\n        selectedDates=selectedDates\n        disabledDates=disabledDates\n        select=\"dateSelected\"}}\n    </div>\n  {{/if}}\n</div>\n");
   });

@@ -1,15 +1,15 @@
 {{#unless disableHeader}}
-  <div class="ui-calendar-header">
+  <div class="un-calendar-header">
     {{#unless disableControls}}
       <nav>
-        <button {{action "prev"}} {{bind-attr disabled="isPrevDisabled"}} class="ui-calendar-prev">
+        <button {{action "prev"}} {{bind-attr disabled="isPrevDisabled"}} class="un-calendar-prev">
           <span>{{{unbound prevLabel}}}</span>
         </button>
-        <button {{action "next"}} {{bind-attr disabled="isNextDisabled"}} class="ui-calendar-next">
+        <button {{action "next"}} {{bind-attr disabled="isNextDisabled"}} class="un-calendar-next">
           <span>{{{unbound nextLabel}}}</span>
         </button>
         {{#unless disableTodayButton}}
-          <button {{action "today"}} class="ui-calendar-today">
+          <button {{action "today"}} class="un-calendar-today">
             <span>{{{unbound todayLabel}}}</span>
           </button>
         {{/unless}}
@@ -18,13 +18,13 @@
   </div>
 {{/unless}}
 
-<div class="ui-calendar-months">
+<div class="un-calendar-months">
   {{#if showPrevMonth}}
-    <div class="ui-calendar-prev-month ui-calendar-month-container">
+    <div class="un-calendar-prev-month un-calendar-month-container">
       <header>
         {{prevMonthLabel}}
       </header>
-      {{ui-calendar-month
+      {{un-calendar-month
         month=prevMonth
         selectedDates=selectedDates
         disabledDates=disabledDates
@@ -32,11 +32,11 @@
     </div>
   {{/if}}
 
-  <div class="ui-calendar-current-month ui-calendar-month-container">
+  <div class="un-calendar-current-month un-calendar-month-container">
     <header>
       {{monthLabel}}
     </header>
-    {{ui-calendar-month
+    {{un-calendar-month
       month=month
       selectedDates=selectedDates
       disabledDates=disabledDates
@@ -44,11 +44,11 @@
   </div>
 
   {{#if showNextMonth}}
-    <div class="ui-calendar-next-month ui-calendar-month-container">
+    <div class="un-calendar-next-month un-calendar-month-container">
       <header>
         {{nextMonthLabel}}
       </header>
-      {{ui-calendar-month
+      {{un-calendar-month
         month=nextMonth
         selectedDates=selectedDates
         disabledDates=disabledDates
