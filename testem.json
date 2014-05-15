@@ -6,7 +6,7 @@
     "vendor/ember/ember.js",
     "vendor/ember-qunit/dist/globals/main.js",
     "vendor/moment/moment.js",
-    "http://localhost:4200/globals/main.js",
+    "http://localhost:4200/globals/un-calendar.js",
     "test/test-helper.js",
     "test/**/*-test.js"
   ]
