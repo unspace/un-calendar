@@ -1,9 +1,9 @@
 var pickFiles           = require('broccoli-static-compiler');
-var filterTemplates     = require('broccoli-template');
 var vndFilterES6Modules = require('broccoli-dist-es6-module');
 var compileSass         = require('broccoli-sass');
 var mergeTrees          = require('broccoli-merge-trees');
 var autoprefixer        = require('broccoli-autoprefixer');
+var templateCompiler    = require('broccoli-ember-hbs-template-compiler');
 
 var lib                 = 'lib';
 var scss                = 'scss';
@@ -15,10 +15,16 @@ function filterES6Modules(tree, opts) {
 var styles = compileSass([scss], 'ui-calendar.scss', 'ui-calendar.css');
 styles = autoprefixer(styles);
 
-lib = filterTemplates(lib, {
-  extensions: ['hbs'],
-  compileFunction: 'Ember.Handlebars.compile'
+var templates = pickFiles(lib, {
+  srcDir: '/templates',
+  destDir: '/templates'
 });
+
+templates = templateCompiler(templates, {
+  module: true
+});
+
+lib = mergeTrees([lib, templates]);
 
 lib = filterES6Modules(lib, {
   global:      'Un.Calendar',

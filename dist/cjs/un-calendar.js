@@ -7,7 +7,7 @@ License: https://github.com/unspace/un-calendar/blob/master/LICENSE
 
 var UnCalendarComponent = require("./un-calendar-component")["default"] || require("./un-calendar-component");
 var UnCalendarMonthComponent = require("./un-calendar-month-component")["default"] || require("./un-calendar-month-component");
-var UnCalendarTemplate = require("./un-calendar-template")["default"] || require("./un-calendar-template");
+var UnCalendarTemplate = require("./templates/un-calendar")["default"] || require("./templates/un-calendar");
 var Application = require("ember").Application;
 
 Application.initializer({

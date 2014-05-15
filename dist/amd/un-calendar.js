@@ -1,5 +1,5 @@
 define(
-  ["./un-calendar-component","./un-calendar-month-component","./un-calendar-template","ember","exports"],
+  ["./un-calendar-component","./un-calendar-month-component","./templates/un-calendar","ember","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __exports__) {
     "use strict";
     /*!
