@@ -28,7 +28,7 @@ _**A wild [calendar demo](http://emberjs.jsbin.com/komop/2/) appears!**_
 
 You can use the builds provided in the [`dist`](/dist) directory, if you don't
 know why there is a dist directory and just want a file to plop into your app
-you probably want [`dist/globals/main.js`](/dist/globals/main.js). There is also
+you probably want [`dist/globals/un-calendar.js`](/dist/globals/un-calendar.js). There is also
 an very basic CSS file that you can use as a starting point for styling the
 calendar and month components located in
 [`dist/un-calendar.css`](/dist/un-calendar.css).
