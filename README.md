@@ -90,7 +90,7 @@ it if you want to build your own calendar functionality:
 
 ### Development
 
-Install the project dev dependencies, it will load about 50,000 microframeworks
+Install the project dev dependencies, it will load **over 9000** microframeworks
 into `node_modules`.
 
 ```sh
