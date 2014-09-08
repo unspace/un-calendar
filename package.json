@@ -1,6 +1,9 @@
 {
-  "name": "ember-ui-calendar",
+  "name": "un-calendar",
   "main": "dist/cjs/main.js",
+  "ember-addon": {
+    "main": "ember-addon/index.js"
+  },
   "version": "0.1.1",
   "description": "A calendar component for Ember with a speedy month view",
   "author": "Carsten Nielsen <heycarsten@gmail.com>",
@@ -33,7 +36,8 @@
     "day",
     "picker",
     "select",
-    "chooser"
+    "chooser",
+    "ember-addon"
   ],
   "bugs": {
     "url": "https://github.com/heycarsten/ember-ui-calendar/issues"
