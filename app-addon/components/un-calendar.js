@@ -1,14 +1,14 @@
 import moment from 'moment';
-import { Component, computed } from 'ember';
+import Ember from 'ember';
 
 function cpFormatMoment(key, format) {
-  return computed(function() {
+  return Ember.computed(function() {
     var date = this.get(key);
     return date ? date.format(format) : null;
   }).property(key);
 }
 
-export default Component.extend({
+export default Ember.Component.extend({
   classNames: 'un-calendar',
 
   prevLabel:           '&larr;',

@@ -6,7 +6,11 @@ var autoprefixer        = require('broccoli-autoprefixer');
 var templateCompiler    = require('broccoli-ember-hbs-template-compiler');
 
 var lib                 = 'lib';
+var appAddonLib         = 'app-addon';
+var templateAddonLib    = 'templates-addon';
 var scss                = 'scss';
+
+lib = mergeTrees([lib, appAddonLib]);
 
 function filterES6Modules(tree, opts) {
   return vndFilterES6Modules(tree, opts);
@@ -15,8 +19,8 @@ function filterES6Modules(tree, opts) {
 var styles = compileSass([scss], 'un-calendar.scss', 'un-calendar.css');
 styles = autoprefixer(styles);
 
-var templates = pickFiles(lib, {
-  srcDir: '/templates',
+var templates = pickFiles(templateAddonLib, {
+  srcDir: '/components',
   destDir: '/templates'
 });
 
