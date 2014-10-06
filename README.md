@@ -88,6 +88,52 @@ it if you want to build your own calendar functionality:
   select="dateSelected"}}
 ```
 
+### `ember-cli` add-on
+
+To use as an add-on in `ember-cli`, add it to `package.json`:
+
+```
+$ npm install --save-dev un-calendar
+```
+
+Then run the generator to add `moment.js` to your `bower.json`:
+
+```
+$ ember generate un-calendar
+```
+
+`un-calendar` provides an module shim for `moment.js`. This allows you to import
+it using ES6 syntax instead of relying on the global. For instance, if you were
+defining a custom transform
+
+```javascript
+// app/transforms/moment.js
+import DS from 'ember-data';
+import moment from 'moment';
+
+export default DS.Transform.extend({
+  serialize: function(deserialized) {
+    return deserialized.format('YYYY-MM-DD');
+  },
+
+  deserialize: function(serialized) {
+    return moment(serialized);
+  }
+});
+
+// app/models/event.js
+import DS from 'ember-data';
+
+export default DS.Model.extend({
+  date: DS.attr('model')
+});
+
+```
+
+The CSS still needs to be manually copied into the consuming project. This is to
+provide flexibility for consumers of the addon. You can source the SCSS, the
+compiled CSS or write your own styles from scratch.
+
 ### Development
 
 Install the project dev dependencies, it will load **over 9000** microframeworks
