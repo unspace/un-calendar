@@ -2,12 +2,6 @@
 var moment = require("moment")["default"] || require("moment");
 var Ember = require("ember")["default"] || require("ember");
 
-var DATE_SLOT_HBS = Handlebars.compile(
-  '<li class="{{classNames}}" data-date="{{jsonDate}}">' +
-    '{{date}}' +
-  '</li>'
-);
-
 function containsDate(dates, date) {
   if (!dates || !Ember.get(dates, 'length')) {
     return false;
@@ -86,7 +80,7 @@ exports["default"] = Ember.Component.extend({
         view  = this,
         json;
 
-    if (this.state !== 'inDOM') {
+    if (this._state !== 'inDOM') {
       return;
     }
 
@@ -111,7 +105,7 @@ exports["default"] = Ember.Component.extend({
     }
 
     function renderSlot(slot) {
-      var attrs;
+      var attrs, template;
 
       if (slot) {
         attrs = {
@@ -121,8 +115,10 @@ exports["default"] = Ember.Component.extend({
         };
 
         view.applyOptionsForDate(attrs, slot);
-        attrs.classNames = attrs.classNames.join(' ');
-        buff.push(DATE_SLOT_HBS(attrs));
+
+        template = '<li class="'+ attrs.classNames.join(' ') + '" data-date="' + attrs.jsonDate + '">' + attrs.date + '</li>';
+
+        buff.push(template);
       } else {
         buff.push('<li class="un-calendar-slot un-calendar-empty"></li>');
       }

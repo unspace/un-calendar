@@ -3,12 +3,6 @@
 var moment = window.moment["default"] || window.moment;
 var Ember = window.Ember["default"] || window.Ember;
 
-var DATE_SLOT_HBS = Handlebars.compile(
-  '<li class="{{classNames}}" data-date="{{jsonDate}}">' +
-    '{{date}}' +
-  '</li>'
-);
-
 function containsDate(dates, date) {
   if (!dates || !Ember.get(dates, 'length')) {
     return false;
@@ -87,7 +81,7 @@ exports["default"] = Ember.Component.extend({
         view  = this,
         json;
 
-    if (this.state !== 'inDOM') {
+    if (this._state !== 'inDOM') {
       return;
     }
 
@@ -112,7 +106,7 @@ exports["default"] = Ember.Component.extend({
     }
 
     function renderSlot(slot) {
-      var attrs;
+      var attrs, template;
 
       if (slot) {
         attrs = {
@@ -122,8 +116,10 @@ exports["default"] = Ember.Component.extend({
         };
 
         view.applyOptionsForDate(attrs, slot);
-        attrs.classNames = attrs.classNames.join(' ');
-        buff.push(DATE_SLOT_HBS(attrs));
+
+        template = '<li class="'+ attrs.classNames.join(' ') + '" data-date="' + attrs.jsonDate + '">' + attrs.date + '</li>';
+
+        buff.push(template);
       } else {
         buff.push('<li class="un-calendar-slot un-calendar-empty"></li>');
       }
@@ -239,7 +235,7 @@ exports["default"] = Ember.Component.extend({
         return;
       }
 
-      this.set('month', month.clone().subtract('months', 1));
+      this.set('month', month.clone().subtract(1, 'months'));
     },
 
     next: function() {
@@ -300,12 +296,12 @@ exports["default"] = Ember.Component.extend({
 
   prevMonth: function() {
     var month = this.get('month');
-    return month ? month.clone().subtract('months', 1) : null;
+    return month ? month.clone().subtract(1, 'months') : null;
   }.property('month'),
 
   nextMonth: function() {
     var month = this.get('month');
-    return month ? month.clone().add('months', 1) : null;
+    return month ? month.clone().add(1, 'months') : null;
   }.property('month'),
 
   isNextMonthInFuture: function() {

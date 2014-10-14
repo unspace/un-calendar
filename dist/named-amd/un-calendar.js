@@ -5,12 +5,6 @@ define("un-calendar/components/un-calendar-month",
     var moment = __dependency1__["default"] || __dependency1__;
     var Ember = __dependency2__["default"] || __dependency2__;
 
-    var DATE_SLOT_HBS = Handlebars.compile(
-      '<li class="{{classNames}}" data-date="{{jsonDate}}">' +
-        '{{date}}' +
-      '</li>'
-    );
-
     function containsDate(dates, date) {
       if (!dates || !Ember.get(dates, 'length')) {
         return false;
@@ -89,7 +83,7 @@ define("un-calendar/components/un-calendar-month",
             view  = this,
             json;
 
-        if (this.state !== 'inDOM') {
+        if (this._state !== 'inDOM') {
           return;
         }
 
@@ -114,7 +108,7 @@ define("un-calendar/components/un-calendar-month",
         }
 
         function renderSlot(slot) {
-          var attrs;
+          var attrs, template;
 
           if (slot) {
             attrs = {
@@ -124,8 +118,10 @@ define("un-calendar/components/un-calendar-month",
             };
 
             view.applyOptionsForDate(attrs, slot);
-            attrs.classNames = attrs.classNames.join(' ');
-            buff.push(DATE_SLOT_HBS(attrs));
+
+            template = '<li class="'+ attrs.classNames.join(' ') + '" data-date="' + attrs.jsonDate + '">' + attrs.date + '</li>';
+
+            buff.push(template);
           } else {
             buff.push('<li class="un-calendar-slot un-calendar-empty"></li>');
           }
@@ -244,7 +240,7 @@ define("un-calendar/components/un-calendar",
             return;
           }
 
-          this.set('month', month.clone().subtract('months', 1));
+          this.set('month', month.clone().subtract(1, 'months'));
         },
 
         next: function() {
@@ -305,12 +301,12 @@ define("un-calendar/components/un-calendar",
 
       prevMonth: function() {
         var month = this.get('month');
-        return month ? month.clone().subtract('months', 1) : null;
+        return month ? month.clone().subtract(1, 'months') : null;
       }.property('month'),
 
       nextMonth: function() {
         var month = this.get('month');
-        return month ? month.clone().add('months', 1) : null;
+        return month ? month.clone().add(1, 'months') : null;
       }.property('month'),
 
       isNextMonthInFuture: function() {
