@@ -169,4 +169,4 @@ $ testem # Then follow the instructions
 
 ### Credits
 
-Many thanks to @ecbypi for doing the bulk of the work that made `un-calendar` and `ember-cli-addon`.
+Many thanks to @ecbypi for doing the bulk of the work that made `un-calendar` an `ember-cli-addon`.
