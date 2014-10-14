@@ -79,7 +79,7 @@ export default Ember.Component.extend({
         view  = this,
         json;
 
-    if (this.state !== 'inDOM') {
+    if (this._state !== 'inDOM') {
       return;
     }
 

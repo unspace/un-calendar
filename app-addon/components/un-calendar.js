@@ -84,7 +84,7 @@ export default Ember.Component.extend({
         return;
       }
 
-      this.set('month', month.clone().subtract('months', 1));
+      this.set('month', month.clone().subtract(1, 'months'));
     },
 
     next: function() {
@@ -145,12 +145,12 @@ export default Ember.Component.extend({
 
   prevMonth: function() {
     var month = this.get('month');
-    return month ? month.clone().subtract('months', 1) : null;
+    return month ? month.clone().subtract(1, 'months') : null;
   }.property('month'),
 
   nextMonth: function() {
     var month = this.get('month');
-    return month ? month.clone().add('months', 1) : null;
+    return month ? month.clone().add(1, 'months') : null;
   }.property('month'),
 
   isNextMonthInFuture: function() {
