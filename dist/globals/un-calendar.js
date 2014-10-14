@@ -1,129 +1,169 @@
 !function(e){if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else{var n;"undefined"!=typeof window?n=window:"undefined"!=typeof global?n=global:"undefined"!=typeof self&&(n=self),(n.Un||(n.Un={})).Calendar=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 "use strict";
+var moment = window.moment["default"] || window.moment;
 var Ember = window.Ember["default"] || window.Ember;
-exports["default"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
-this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, helper, options, escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
 
-function program1(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n  <div class=\"un-calendar-header\">\n    ");
-  stack1 = helpers.unless.call(depth0, "disableControls", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n  </div>\n");
-  return buffer;
-  }
-function program2(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n      <nav>\n        <button ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "prev", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
-  data.buffer.push(" ");
-  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
-    'disabled': ("isPrevDisabled")
-  },hashTypes:{'disabled': "STRING"},hashContexts:{'disabled': depth0},contexts:[],types:[],data:data})));
-  data.buffer.push(" class=\"un-calendar-prev\">\n          <span>");
-  stack1 = helpers.unbound.call(depth0, "prevLabel", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("</span>\n        </button>\n        <button ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "next", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
-  data.buffer.push(" ");
-  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
-    'disabled': ("isNextDisabled")
-  },hashTypes:{'disabled': "STRING"},hashContexts:{'disabled': depth0},contexts:[],types:[],data:data})));
-  data.buffer.push(" class=\"un-calendar-next\">\n          <span>");
-  stack1 = helpers.unbound.call(depth0, "nextLabel", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("</span>\n        </button>\n        ");
-  stack1 = helpers.unless.call(depth0, "disableTodayButton", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n      </nav>\n    ");
-  return buffer;
-  }
-function program3(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n          <button ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "today", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
-  data.buffer.push(" class=\"un-calendar-today\">\n            <span>");
-  stack1 = helpers.unbound.call(depth0, "todayLabel", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("</span>\n          </button>\n        ");
-  return buffer;
+var DATE_SLOT_HBS = Handlebars.compile(
+  '<li class="{{classNames}}" data-date="{{jsonDate}}">' +
+    '{{date}}' +
+  '</li>'
+);
+
+function containsDate(dates, date) {
+  if (!dates || !Ember.get(dates, 'length')) {
+    return false;
   }
 
-function program5(depth0,data) {
-  
-  var buffer = '', stack1, helper, options;
-  data.buffer.push("\n    <div class=\"un-calendar-prev-month un-calendar-month-container\">\n      <header>\n        ");
-  stack1 = helpers._triageMustache.call(depth0, "prevMonthLabel", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n      </header>\n      ");
-  data.buffer.push(escapeExpression((helper = helpers['un-calendar-month'] || (depth0 && depth0['un-calendar-month']),options={hash:{
-    'month': ("prevMonth"),
-    'selectedDates': ("selectedDates"),
-    'disabledDates': ("disabledDates"),
-    'select': ("dateSelected")
-  },hashTypes:{'month': "ID",'selectedDates': "ID",'disabledDates': "ID",'select': "STRING"},hashContexts:{'month': depth0,'selectedDates': depth0,'disabledDates': depth0,'select': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "un-calendar-month", options))));
-  data.buffer.push("\n    </div>\n  ");
-  return buffer;
+  return dates.any(function(d) {
+    return date.isSame(d, 'day');
+  });
+}
+
+function forEachSlot(month, iter) {
+  var totalDays  = month.daysInMonth(),
+      firstDay   = month.clone().startOf('month').weekday(),
+      currentDay = 1;
+
+  function popCurrentDay() {
+    if (currentDay > totalDays) {
+      return null;
+    } else {
+      return moment([month.year(), month.month(), currentDay++]);
+    }
   }
 
-function program7(depth0,data) {
-  
-  var buffer = '', stack1, helper, options;
-  data.buffer.push("\n    <div class=\"un-calendar-next-month un-calendar-month-container\">\n      <header>\n        ");
-  stack1 = helpers._triageMustache.call(depth0, "nextMonthLabel", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n      </header>\n      ");
-  data.buffer.push(escapeExpression((helper = helpers['un-calendar-month'] || (depth0 && depth0['un-calendar-month']),options={hash:{
-    'month': ("nextMonth"),
-    'selectedDates': ("selectedDates"),
-    'disabledDates': ("disabledDates"),
-    'select': ("dateSelected")
-  },hashTypes:{'month': "ID",'selectedDates': "ID",'disabledDates': "ID",'select': "STRING"},hashContexts:{'month': depth0,'selectedDates': depth0,'disabledDates': depth0,'select': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "un-calendar-month", options))));
-  data.buffer.push("\n    </div>\n  ");
-  return buffer;
-  }
+  for (var week = 0; week <= 6; week++) {
+    for (var day = 0; day <= 6; day++) {
+      if (week === 0) {
+        iter(day < firstDay ? null : popCurrentDay());
+      } else {
+        iter(currentDay <= totalDays ? popCurrentDay() : null);
+      }
+    }
 
-  stack1 = helpers.unless.call(depth0, "disableHeader", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n\n<div class=\"un-calendar-months\">\n  ");
-  stack1 = helpers['if'].call(depth0, "showPrevMonth", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n\n  <div class=\"un-calendar-current-month un-calendar-month-container\">\n    <header>\n      ");
-  stack1 = helpers._triageMustache.call(depth0, "monthLabel", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n    </header>\n    ");
-  data.buffer.push(escapeExpression((helper = helpers['un-calendar-month'] || (depth0 && depth0['un-calendar-month']),options={hash:{
-    'month': ("month"),
-    'selectedDates': ("selectedDates"),
-    'disabledDates': ("disabledDates"),
-    'select': ("dateSelected")
-  },hashTypes:{'month': "ID",'selectedDates': "ID",'disabledDates': "ID",'select': "STRING"},hashContexts:{'month': depth0,'selectedDates': depth0,'disabledDates': depth0,'select': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "un-calendar-month", options))));
-  data.buffer.push("\n  </div>\n\n  ");
-  stack1 = helpers['if'].call(depth0, "showNextMonth", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(7, program7, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n</div>\n");
-  return buffer;
-  
+    if (currentDay > totalDays) {
+      break;
+    }
+  }
+}
+
+exports["default"] = Ember.Component.extend({
+  tagName:      'ol',
+  classNames:   'un-calendar-month',
+  month:         null,
+  selectedDates: null,
+  disabledDates: null,
+
+  init: function() {
+    this._super();
+
+    if (!this.get('selectedDates')) {
+      throw 'you must provide selectedDates to un-calendar-month';
+    }
+  },
+
+  click: function(event) {
+    var $target = Ember.$(event.target);
+
+    if ($target.is('.is-disabled')) {
+      return;
+    }
+
+    if ($target.is('[data-date]')) {
+      this.sendAction('select', moment($target.data('date'), 'YYYY-MM-DD'));
+    }
+  },
+
+  monthDidChange: function() {
+    Ember.run.scheduleOnce('afterRender', this, 'rerender');
+  }.observes('month'),
+
+  selectedDatesDidChange: function() {
+    Ember.run.scheduleOnce('afterRender', this, 'setSelectedDates');
+  }.observes('selectedDates.@each'),
+
+  setSelectedDates: function() {
+    var dates = this.get('selectedDates'),
+        view  = this,
+        json;
+
+    if (this.state !== 'inDOM') {
+      return;
+    }
+
+    this.$('li').removeClass('is-selected');
+
+    dates.forEach(function(date) {
+      json = date.format('YYYY-MM-DD');
+      view.$('[data-date="' + json + '"]').addClass('is-selected');
+    });
+  },
+
+  didInsertElement: function() {
+    this.setSelectedDates();
+  },
+
+  render: function(buff) {
+    var month = this.get('month'),
+        view  = this;
+
+    if (!month) {
+      return;
+    }
+
+    function renderSlot(slot) {
+      var attrs;
+
+      if (slot) {
+        attrs = {
+          date:       slot.format('D'),
+          jsonDate:   slot.format('YYYY-MM-DD'),
+          classNames: ['un-calendar-slot', 'un-calendar-day']
+        };
+
+        view.applyOptionsForDate(attrs, slot);
+        attrs.classNames = attrs.classNames.join(' ');
+        buff.push(DATE_SLOT_HBS(attrs));
+      } else {
+        buff.push('<li class="un-calendar-slot un-calendar-empty"></li>');
+      }
+    }
+
+    forEachSlot(month, function(slot) {
+      renderSlot(slot);
+    });
+  },
+
+  applyOptionsForDate: function(options, date) {
+    var disabledDates = this.get('disabledDates'),
+        selectedDates = this.get('selectedDates');
+
+    if (moment().isSame(date, 'day')) {
+      options.classNames.push('is-today');
+    }
+
+    if (disabledDates && containsDate(disabledDates, date)) {
+      options.classNames.push('is-disabled');
+    }
+
+    if (selectedDates && containsDate(selectedDates, date)) {
+      options.classNames.push('is-selected');
+    }
+  },
 });
 },{}],2:[function(_dereq_,module,exports){
 "use strict";
 var moment = window.moment["default"] || window.moment;
-var Component = window.Ember.Component;
-var computed = window.Ember.computed;
+var Ember = window.Ember["default"] || window.Ember;
 
 function cpFormatMoment(key, format) {
-  return computed(function() {
+  return Ember.computed(function() {
     var date = this.get(key);
     return date ? date.format(format) : null;
   }).property(key);
 }
 
-exports["default"] = Component.extend({
+exports["default"] = Ember.Component.extend({
   classNames: 'un-calendar',
 
   prevLabel:           '&larr;',
@@ -334,162 +374,132 @@ exports["default"] = Component.extend({
 });
 },{}],3:[function(_dereq_,module,exports){
 "use strict";
-var Handlebars = window.Handlebars["default"] || window.Handlebars;
-var moment = window.moment["default"] || window.moment;
-var Component = window.Ember.Component;
-var $ = window.Ember.$;
-var run = window.Ember.run;
-var get = window.Ember.get;
+var UnCalendarComponent = _dereq_("../components/un-calendar")["default"] || _dereq_("../components/un-calendar");
+var UnCalendarMonthComponent = _dereq_("../components/un-calendar-month")["default"] || _dereq_("../components/un-calendar-month");
+var UnCalendarTemplate = _dereq_("../templates/un-calendar")["default"] || _dereq_("../templates/un-calendar");
 
-var DATE_SLOT_HBS = Handlebars.compile(
-  '<li class="{{classNames}}" data-date="{{jsonDate}}">' +
-    '{{date}}' +
-  '</li>'
-);
+exports["default"] = {
+  name: 'un-calendar',
 
-function containsDate(dates, date) {
-  if (!dates || !get(dates, 'length')) {
-    return false;
+  initialize: function(container) {
+    container.register('template:components/un-calendar', UnCalendarTemplate);
+    container.register('component:un-calendar', UnCalendarComponent);
+    container.register('component:un-calendar-month', UnCalendarMonthComponent);
+  }
+};
+},{"../components/un-calendar":2,"../components/un-calendar-month":1,"../templates/un-calendar":4}],4:[function(_dereq_,module,exports){
+"use strict";
+var Ember = window.Ember["default"] || window.Ember;
+exports["default"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var buffer = '', stack1, helper, options, escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
+
+function program1(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\n  <div class=\"un-calendar-header\">\n    ");
+  stack1 = helpers.unless.call(depth0, "disableControls", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n  </div>\n");
+  return buffer;
+  }
+function program2(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\n      <nav>\n        <button ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "prev", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
+  data.buffer.push(" ");
+  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
+    'disabled': ("isPrevDisabled")
+  },hashTypes:{'disabled': "STRING"},hashContexts:{'disabled': depth0},contexts:[],types:[],data:data})));
+  data.buffer.push(" class=\"un-calendar-prev\">\n          <span>");
+  stack1 = helpers.unbound.call(depth0, "prevLabel", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("</span>\n        </button>\n        <button ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "next", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
+  data.buffer.push(" ");
+  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
+    'disabled': ("isNextDisabled")
+  },hashTypes:{'disabled': "STRING"},hashContexts:{'disabled': depth0},contexts:[],types:[],data:data})));
+  data.buffer.push(" class=\"un-calendar-next\">\n          <span>");
+  stack1 = helpers.unbound.call(depth0, "nextLabel", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("</span>\n        </button>\n        ");
+  stack1 = helpers.unless.call(depth0, "disableTodayButton", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n      </nav>\n    ");
+  return buffer;
+  }
+function program3(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\n          <button ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "today", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
+  data.buffer.push(" class=\"un-calendar-today\">\n            <span>");
+  stack1 = helpers.unbound.call(depth0, "todayLabel", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("</span>\n          </button>\n        ");
+  return buffer;
   }
 
-  return dates.any(function(d) {
-    return date.isSame(d, 'day');
-  });
-}
-
-function forEachSlot(month, iter) {
-  var totalDays  = month.daysInMonth(),
-      firstDay   = month.clone().startOf('month').weekday(),
-      currentDay = 1;
-
-  function popCurrentDay() {
-    if (currentDay > totalDays) {
-      return null;
-    } else {
-      return moment([month.year(), month.month(), currentDay++]);
-    }
+function program5(depth0,data) {
+  
+  var buffer = '', stack1, helper, options;
+  data.buffer.push("\n    <div class=\"un-calendar-prev-month un-calendar-month-container\">\n      <header>\n        ");
+  stack1 = helpers._triageMustache.call(depth0, "prevMonthLabel", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n      </header>\n      ");
+  data.buffer.push(escapeExpression((helper = helpers['un-calendar-month'] || (depth0 && depth0['un-calendar-month']),options={hash:{
+    'month': ("prevMonth"),
+    'selectedDates': ("selectedDates"),
+    'disabledDates': ("disabledDates"),
+    'select': ("dateSelected")
+  },hashTypes:{'month': "ID",'selectedDates': "ID",'disabledDates': "ID",'select': "STRING"},hashContexts:{'month': depth0,'selectedDates': depth0,'disabledDates': depth0,'select': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "un-calendar-month", options))));
+  data.buffer.push("\n    </div>\n  ");
+  return buffer;
   }
 
-  for (var week = 0; week <= 6; week++) {
-    for (var day = 0; day <= 6; day++) {
-      if (week === 0) {
-        iter(day < firstDay ? null : popCurrentDay());
-      } else {
-        iter(currentDay <= totalDays ? popCurrentDay() : null);
-      }
-    }
-
-    if (currentDay > totalDays) {
-      break;
-    }
+function program7(depth0,data) {
+  
+  var buffer = '', stack1, helper, options;
+  data.buffer.push("\n    <div class=\"un-calendar-next-month un-calendar-month-container\">\n      <header>\n        ");
+  stack1 = helpers._triageMustache.call(depth0, "nextMonthLabel", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n      </header>\n      ");
+  data.buffer.push(escapeExpression((helper = helpers['un-calendar-month'] || (depth0 && depth0['un-calendar-month']),options={hash:{
+    'month': ("nextMonth"),
+    'selectedDates': ("selectedDates"),
+    'disabledDates': ("disabledDates"),
+    'select': ("dateSelected")
+  },hashTypes:{'month': "ID",'selectedDates': "ID",'disabledDates': "ID",'select': "STRING"},hashContexts:{'month': depth0,'selectedDates': depth0,'disabledDates': depth0,'select': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "un-calendar-month", options))));
+  data.buffer.push("\n    </div>\n  ");
+  return buffer;
   }
-}
 
-exports["default"] = Component.extend({
-  tagName:      'ol',
-  classNames:   'un-calendar-month',
-  month:         null,
-  selectedDates: null,
-  disabledDates: null,
-
-  init: function() {
-    this._super();
-
-    if (!this.get('selectedDates')) {
-      throw 'you must provide selectedDates to un-calendar-month';
-    }
-  },
-
-  click: function(event) {
-    var $target = $(event.target);
-
-    if ($target.is('.is-disabled')) {
-      return;
-    }
-
-    if ($target.is('[data-date]')) {
-      this.sendAction('select', moment($target.data('date'), 'YYYY-MM-DD'));
-    }
-  },
-
-  monthDidChange: function() {
-    run.scheduleOnce('afterRender', this, 'rerender');
-  }.observes('month'),
-
-  selectedDatesDidChange: function() {
-    run.scheduleOnce('afterRender', this, 'setSelectedDates');
-  }.observes('selectedDates.@each'),
-
-  setSelectedDates: function() {
-    var dates = this.get('selectedDates'),
-        view  = this,
-        json;
-
-    if (this.state !== 'inDOM') {
-      return;
-    }
-
-    this.$('li').removeClass('is-selected');
-
-    dates.forEach(function(date) {
-      json = date.format('YYYY-MM-DD');
-      view.$('[data-date="' + json + '"]').addClass('is-selected');
-    });
-  },
-
-  didInsertElement: function() {
-    this.setSelectedDates();
-  },
-
-  render: function(buff) {
-    var month = this.get('month'),
-        view  = this;
-
-    if (!month) {
-      return;
-    }
-
-    function renderSlot(slot) {
-      var attrs;
-
-      if (slot) {
-        attrs = {
-          date:       slot.format('D'),
-          jsonDate:   slot.format('YYYY-MM-DD'),
-          classNames: ['un-calendar-slot', 'un-calendar-day']
-        };
-
-        view.applyOptionsForDate(attrs, slot);
-        attrs.classNames = attrs.classNames.join(' ');
-        buff.push(DATE_SLOT_HBS(attrs));
-      } else {
-        buff.push('<li class="un-calendar-slot un-calendar-empty"></li>');
-      }
-    }
-
-    forEachSlot(month, function(slot) {
-      renderSlot(slot);
-    });
-  },
-
-  applyOptionsForDate: function(options, date) {
-    var disabledDates = this.get('disabledDates'),
-        selectedDates = this.get('selectedDates');
-
-    if (moment().isSame(date, 'day')) {
-      options.classNames.push('is-today');
-    }
-
-    if (disabledDates && containsDate(disabledDates, date)) {
-      options.classNames.push('is-disabled');
-    }
-
-    if (selectedDates && containsDate(selectedDates, date)) {
-      options.classNames.push('is-selected');
-    }
-  },
+  stack1 = helpers.unless.call(depth0, "disableHeader", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n\n<div class=\"un-calendar-months\">\n  ");
+  stack1 = helpers['if'].call(depth0, "showPrevMonth", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n\n  <div class=\"un-calendar-current-month un-calendar-month-container\">\n    <header>\n      ");
+  stack1 = helpers._triageMustache.call(depth0, "monthLabel", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n    </header>\n    ");
+  data.buffer.push(escapeExpression((helper = helpers['un-calendar-month'] || (depth0 && depth0['un-calendar-month']),options={hash:{
+    'month': ("month"),
+    'selectedDates': ("selectedDates"),
+    'disabledDates': ("disabledDates"),
+    'select': ("dateSelected")
+  },hashTypes:{'month': "ID",'selectedDates': "ID",'disabledDates': "ID",'select': "STRING"},hashContexts:{'month': depth0,'selectedDates': depth0,'disabledDates': depth0,'select': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "un-calendar-month", options))));
+  data.buffer.push("\n  </div>\n\n  ");
+  stack1 = helpers['if'].call(depth0, "showNextMonth", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(7, program7, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n</div>\n");
+  return buffer;
+  
 });
-},{}],4:[function(_dereq_,module,exports){
+},{}],5:[function(_dereq_,module,exports){
 "use strict";
 /*!
 un-calendar
@@ -497,24 +507,18 @@ un-calendar
 License: https://github.com/unspace/un-calendar/blob/master/LICENSE
 */
 
-var UnCalendarComponent = _dereq_("./un-calendar-component")["default"] || _dereq_("./un-calendar-component");
-var UnCalendarMonthComponent = _dereq_("./un-calendar-month-component")["default"] || _dereq_("./un-calendar-month-component");
-var UnCalendarTemplate = _dereq_("./templates/un-calendar")["default"] || _dereq_("./templates/un-calendar");
+var UnCalendarComponent = _dereq_("./components/un-calendar")["default"] || _dereq_("./components/un-calendar");
+var UnCalendarMonthComponent = _dereq_("./components/un-calendar-month")["default"] || _dereq_("./components/un-calendar-month");
+var UnCalendarTemplate = _dereq_("./components/un-calendar")["default"] || _dereq_("./components/un-calendar");
+var UnCalendarInitializer = _dereq_("./initializers/un-calendar")["default"] || _dereq_("./initializers/un-calendar");
 var Application = window.Ember.Application;
 
-Application.initializer({
-  name: 'ember-un-calendar',
+Application.initializer(UnCalendarInitializer);
 
-  initialize: function(container) {
-    container.register('template:components/un-calendar', UnCalendarTemplate);
-    container.register('component:un-calendar', UnCalendarComponent);
-    container.register('component:un-calendar-month', UnCalendarMonthComponent);
-  }
-});
-
+exports.UnCalendarInitializer = UnCalendarInitializer;
 exports.UnCalendarComponent = UnCalendarComponent;
 exports.UnCalendarMonthComponent = UnCalendarMonthComponent;
 exports.UnCalendarTemplate = UnCalendarTemplate;
-},{"./templates/un-calendar":1,"./un-calendar-component":2,"./un-calendar-month-component":3}]},{},[4])
-(4)
+},{"./components/un-calendar":2,"./components/un-calendar-month":1,"./initializers/un-calendar":3}]},{},[5])
+(5)
 });

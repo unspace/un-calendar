@@ -1,16 +1,15 @@
 "use strict";
 var moment = require("moment")["default"] || require("moment");
-var Component = require("ember").Component;
-var computed = require("ember").computed;
+var Ember = require("ember")["default"] || require("ember");
 
 function cpFormatMoment(key, format) {
-  return computed(function() {
+  return Ember.computed(function() {
     var date = this.get(key);
     return date ? date.format(format) : null;
   }).property(key);
 }
 
-exports["default"] = Component.extend({
+exports["default"] = Ember.Component.extend({
   classNames: 'un-calendar',
 
   prevLabel:           '&larr;',

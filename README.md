@@ -141,9 +141,7 @@ unCalendar: {
 in your `Brocfile` inside the options passed to `new EmberApp`.
 ### Development
 
-Install the project dev dependencies, it will load **over 9000** microframeworks
-into `node_modules`.
-
+Install the project dev dependencies.
 ```sh
 $ npm install
 ```
@@ -168,3 +166,7 @@ test runner and add some tests:
 ```sh
 $ testem # Then follow the instructions
 ```
+
+### Credits
+
+Many thanks to @ecbypi to do the bulk of the work that made `un-calendar` and `ember-cli-addon`.

@@ -5,21 +5,15 @@ un-calendar
 License: https://github.com/unspace/un-calendar/blob/master/LICENSE
 */
 
-var UnCalendarComponent = require("./un-calendar-component")["default"] || require("./un-calendar-component");
-var UnCalendarMonthComponent = require("./un-calendar-month-component")["default"] || require("./un-calendar-month-component");
-var UnCalendarTemplate = require("./templates/un-calendar")["default"] || require("./templates/un-calendar");
+var UnCalendarComponent = require("./components/un-calendar")["default"] || require("./components/un-calendar");
+var UnCalendarMonthComponent = require("./components/un-calendar-month")["default"] || require("./components/un-calendar-month");
+var UnCalendarTemplate = require("./components/un-calendar")["default"] || require("./components/un-calendar");
+var UnCalendarInitializer = require("./initializers/un-calendar")["default"] || require("./initializers/un-calendar");
 var Application = require("ember").Application;
 
-Application.initializer({
-  name: 'ember-un-calendar',
+Application.initializer(UnCalendarInitializer);
 
-  initialize: function(container) {
-    container.register('template:components/un-calendar', UnCalendarTemplate);
-    container.register('component:un-calendar', UnCalendarComponent);
-    container.register('component:un-calendar-month', UnCalendarMonthComponent);
-  }
-});
-
+exports.UnCalendarInitializer = UnCalendarInitializer;
 exports.UnCalendarComponent = UnCalendarComponent;
 exports.UnCalendarMonthComponent = UnCalendarMonthComponent;
 exports.UnCalendarTemplate = UnCalendarTemplate;

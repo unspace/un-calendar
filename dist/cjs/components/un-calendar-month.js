@@ -1,10 +1,6 @@
 "use strict";
-var Handlebars = require("handlebars")["default"] || require("handlebars");
 var moment = require("moment")["default"] || require("moment");
-var Component = require("ember").Component;
-var $ = require("ember").$;
-var run = require("ember").run;
-var get = require("ember").get;
+var Ember = require("ember")["default"] || require("ember");
 
 var DATE_SLOT_HBS = Handlebars.compile(
   '<li class="{{classNames}}" data-date="{{jsonDate}}">' +
@@ -13,7 +9,7 @@ var DATE_SLOT_HBS = Handlebars.compile(
 );
 
 function containsDate(dates, date) {
-  if (!dates || !get(dates, 'length')) {
+  if (!dates || !Ember.get(dates, 'length')) {
     return false;
   }
 
@@ -50,7 +46,7 @@ function forEachSlot(month, iter) {
   }
 }
 
-exports["default"] = Component.extend({
+exports["default"] = Ember.Component.extend({
   tagName:      'ol',
   classNames:   'un-calendar-month',
   month:         null,
@@ -66,7 +62,7 @@ exports["default"] = Component.extend({
   },
 
   click: function(event) {
-    var $target = $(event.target);
+    var $target = Ember.$(event.target);
 
     if ($target.is('.is-disabled')) {
       return;
@@ -78,11 +74,11 @@ exports["default"] = Component.extend({
   },
 
   monthDidChange: function() {
-    run.scheduleOnce('afterRender', this, 'rerender');
+    Ember.run.scheduleOnce('afterRender', this, 'rerender');
   }.observes('month'),
 
   selectedDatesDidChange: function() {
-    run.scheduleOnce('afterRender', this, 'setSelectedDates');
+    Ember.run.scheduleOnce('afterRender', this, 'setSelectedDates');
   }.observes('selectedDates.@each'),
 
   setSelectedDates: function() {

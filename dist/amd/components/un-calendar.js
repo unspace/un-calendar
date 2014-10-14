@@ -3,17 +3,16 @@ define(
   function(__dependency1__, __dependency2__, __exports__) {
     "use strict";
     var moment = __dependency1__["default"] || __dependency1__;
-    var Component = __dependency2__.Component;
-    var computed = __dependency2__.computed;
+    var Ember = __dependency2__["default"] || __dependency2__;
 
     function cpFormatMoment(key, format) {
-      return computed(function() {
+      return Ember.computed(function() {
         var date = this.get(key);
         return date ? date.format(format) : null;
       }).property(key);
     }
 
-    __exports__["default"] = Component.extend({
+    __exports__["default"] = Ember.Component.extend({
       classNames: 'un-calendar',
 
       prevLabel:           '&larr;',

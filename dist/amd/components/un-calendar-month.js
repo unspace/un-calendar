@@ -1,13 +1,9 @@
 define(
-  ["handlebars","moment","ember","exports"],
-  function(__dependency1__, __dependency2__, __dependency3__, __exports__) {
+  ["moment","ember","exports"],
+  function(__dependency1__, __dependency2__, __exports__) {
     "use strict";
-    var Handlebars = __dependency1__["default"] || __dependency1__;
-    var moment = __dependency2__["default"] || __dependency2__;
-    var Component = __dependency3__.Component;
-    var $ = __dependency3__.$;
-    var run = __dependency3__.run;
-    var get = __dependency3__.get;
+    var moment = __dependency1__["default"] || __dependency1__;
+    var Ember = __dependency2__["default"] || __dependency2__;
 
     var DATE_SLOT_HBS = Handlebars.compile(
       '<li class="{{classNames}}" data-date="{{jsonDate}}">' +
@@ -16,7 +12,7 @@ define(
     );
 
     function containsDate(dates, date) {
-      if (!dates || !get(dates, 'length')) {
+      if (!dates || !Ember.get(dates, 'length')) {
         return false;
       }
 
@@ -53,7 +49,7 @@ define(
       }
     }
 
-    __exports__["default"] = Component.extend({
+    __exports__["default"] = Ember.Component.extend({
       tagName:      'ol',
       classNames:   'un-calendar-month',
       month:         null,
@@ -69,7 +65,7 @@ define(
       },
 
       click: function(event) {
-        var $target = $(event.target);
+        var $target = Ember.$(event.target);
 
         if ($target.is('.is-disabled')) {
           return;
@@ -81,11 +77,11 @@ define(
       },
 
       monthDidChange: function() {
-        run.scheduleOnce('afterRender', this, 'rerender');
+        Ember.run.scheduleOnce('afterRender', this, 'rerender');
       }.observes('month'),
 
       selectedDatesDidChange: function() {
-        run.scheduleOnce('afterRender', this, 'setSelectedDates');
+        Ember.run.scheduleOnce('afterRender', this, 'setSelectedDates');
       }.observes('selectedDates.@each'),
 
       setSelectedDates: function() {

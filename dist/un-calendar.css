@@ -15,7 +15,6 @@
   margin-top: 20px;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -o-user-select: none;
   -ms-user-select: none;
   user-select: none; }
 
@@ -52,7 +51,6 @@
   width: 14.28%;
   height: 30px;
   border: 1px solid #eee;
-  -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
   .un-calendar-slot.is-today {
