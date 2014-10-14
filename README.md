@@ -130,10 +130,15 @@ export default DS.Model.extend({
 
 ```
 
-The CSS still needs to be manually copied into the consuming project. This is to
-provide flexibility for consumers of the addon. You can source the SCSS, the
-compiled CSS or write your own styles from scratch.
+The default css will be automatically required, you can override the default styles in your own css or set
 
+```
+unCalendar: {
+  defaultStyles: false
+}
+```
+
+in your `Brocfile` inside the options passed to `new EmberApp`.
 ### Development
 
 Install the project dev dependencies, it will load **over 9000** microframeworks

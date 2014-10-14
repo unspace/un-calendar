@@ -4,9 +4,9 @@
   "ember-addon": {
     "main": "ember-addon/index.js"
   },
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A calendar component for Ember with a speedy month view",
-  "author": "Carsten Nielsen <heycarsten@gmail.com>",
+  "author": "Carsten Nielsen <heycarsten@gmail.com>, Mattia Gheda <ghedamat@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/heycarsten/ember-ui-calendar",
   "devDependencies": {
@@ -16,7 +16,6 @@
     "broccoli-ember-hbs-template-compiler": "^1.6.2",
     "broccoli-static-compiler": "0.1.4",
     "broccoli-autoprefixer": "^1.1.0",
-    "broccoli-sass": "^0.2.2",
     "broccoli-merge-trees": "^0.1.4"
   },
   "dependencies": {},
@@ -25,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heycarsten/ember-ui-calendar.git"
+    "url": "https://github.com/unspace/un-calendar.git"
   },
   "keywords": [
     "ember",
@@ -40,6 +39,6 @@
     "ember-addon"
   ],
   "bugs": {
-    "url": "https://github.com/heycarsten/ember-ui-calendar/issues"
+    "url": "https://github.com/unspace/un-calendar/issues"
   }
 }

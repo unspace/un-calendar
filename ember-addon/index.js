@@ -27,8 +27,23 @@ EmberCLIUnCalendar.prototype.blueprintsPath = function(name) {
   return path.join(__dirname, 'blueprints');
 };
 
+EmberCLIUnCalendar.prototype.initializeOptions = function() {
+  var defaultOptions = {
+    defaultStyles: true
+  };
+
+  this.options = this.app.options.unCalendar = this.app.options.unCalendar || {};
+
+  for (var option in defaultOptions) {
+    if (!this.options.hasOwnProperty(option)) {
+      this.options[option] = defaultOptions[option];
+    }
+  }
+};
+
 EmberCLIUnCalendar.prototype.included = function(app) {
   this.app = app;
+  this.initializeOptions();
 
   this.app.import(app.bowerDirectory + '/moment/moment.js');
   this.app.import('vendor/un-calendar/moment-shim.js', {
@@ -36,6 +51,9 @@ EmberCLIUnCalendar.prototype.included = function(app) {
       'moment': ['default']
     }
   });
+  if (app.options.unCalendar.defaultStyles) {
+    this.app.import('vendor/un-calendar/styles/un-calendar.css');
+  }
 };
 
 module.exports = EmberCLIUnCalendar;
