@@ -1,6 +1,6 @@
 {
   "name": "un-calendar",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "license": "MIT",
   "main": "dist/globals/un-calendar.js",
   "authors": [
