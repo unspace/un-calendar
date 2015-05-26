@@ -2,7 +2,7 @@
   "name": "un-calendar",
   "version": "0.2.1",
   "license": "MIT",
-  "main": "lib/main.js",
+  "main": "dist/globals/un-calendar.js",
   "authors": [
     "Carsten Nielsen <heycarsten@gmail.com>",
     "Mattia Gheda <ghedamat@gmail.com>"
