@@ -19,7 +19,7 @@ now it's just not quick enough.
 - Lets the user go to the current month
 - Sends an action when the user clicks a day
 - Ability to disable moving past the current month into the future or past
-- Ability disable user-controls in general
+- Ability to disable user-controls in general
 - Renders quickly
 
 ### Using It
@@ -29,7 +29,7 @@ _**A wild [calendar demo](http://emberjs.jsbin.com/komop/2/) appears!**_
 You can use the builds provided in the [`dist`](/dist) directory, if you don't
 know why there is a dist directory and just want a file to plop into your app
 you probably want [`dist/globals/un-calendar.js`](/dist/globals/un-calendar.js). There is also
-an very basic CSS file that you can use as a starting point for styling the
+a very basic CSS file that you can use as a starting point for styling the
 calendar and month components located in
 [`dist/un-calendar.css`](/dist/un-calendar.css).
 
@@ -72,7 +72,7 @@ to display a calendar and allow you users to select one or _n_ dates:
 | `disableControls` | boolean          | Show or hide the header controls      |
 | `disablePast`     | boolean          | Disable moving to past months         |
 | `disableFuture`   | boolean          | Disable moving to future months       |
-| `disableManipulation | boolean       | Disable built-in manipulation of `selectedDate` / `selectedDates` select action still sent |
+| `disableManipulation` | boolean       | Disable built-in manipulation of `selectedDate` / `selectedDates` select action still sent |
 | `maxPastDate`     | moment           | Maximum past month                    |
 | `maxFutureDate`   | moment           | Maximum future month                  |
 | `select`          | action name      | Will fire this event with the selected moment when the user selects a date |
@@ -102,7 +102,7 @@ Then run the generator to add `moment.js` to your `bower.json`:
 $ ember generate un-calendar
 ```
 
-`un-calendar` provides an module shim for `moment.js`. This allows you to import
+`un-calendar` provides a module shim for `moment.js`. This allows you to import
 it using ES6 syntax instead of relying on the global. For instance, if you were
 defining a custom transform
 
