@@ -1,6 +1,6 @@
 # Un Calendar
 
-## Warning: this component will work only with Ember <- 1.10
+## Warning: works only with Ember <= 1.10
 
 *This project is currently unmaintained but we'll still accept all the PR love you want to give us!*
 
